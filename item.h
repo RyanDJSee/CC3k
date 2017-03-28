@@ -1,6 +1,9 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include "cell.h"
+class StepType;
+
 class Item: public Cell {
   int amount const;
 public:

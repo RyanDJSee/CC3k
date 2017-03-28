@@ -1,6 +1,9 @@
 #ifndef WD_H
 #define WD_H
 
+#include "potion.h"
+class Subject;
+
 class WD: public Potion {
   static bool wasUsed; //whether the type of this potion has been used before
 

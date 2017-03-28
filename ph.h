@@ -1,6 +1,9 @@
 #ifndef PH_H
 #define PH_H
 
+#include "potion.h"
+class Subject;
+
 class PH: public Potion {
   static bool wasUsed; //whether the type of this potion has been used before
 
