@@ -10,7 +10,7 @@ class Cell : public Subject, public Observer {
   int chamber; //which chamber is this in
 
  public:
-  Cell(int cham);  // constructor
+  void setPos(int r, int c); //update location for this
   void notify(Subject &whoNotified) override; //default behaviour
   // wN called this.notify(wN), this should do sth on wN
   bool isEmpty() const; //whether this is empty

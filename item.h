@@ -7,7 +7,7 @@ class StepType;
 class Item: public Cell {
   int amount const;
 public:
-  Item(int iniamt); //constructor
+  Item(int amt); //constructor
   int getHP() const; // return the HP amount in this
   int getAtk() const; // return the Atk amount in this
   int getDef() const; // return the Def amount in this

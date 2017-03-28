@@ -4,9 +4,12 @@
 #include "cell.h"
 
 class Empty: public Cell {
+
 public:
+  Empty(int chamber, int r, int c); //constructor
   bool isEmpty() const override;
   char getRep() const override; //returns the text representation of this
+
 
 };
 

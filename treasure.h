@@ -6,10 +6,9 @@ class Subject;
 class StepType;
 
 class Treasure: public Item {
-  bool isGuarded; //if true: it's a Dragon Hoard that is guarded
-  
+
 public:
-  Treasure(int chamber, int amt, bool isGuarded); //constructor
+  Treasure(int chamber, int r, int c, int amt, bool isGuarded); //constructor
   void notify(Subject &whoNotified) override;
   // wN called this.notify(wN), this should do sth on wN
   char getRep() const override; //returns the text representation of this
