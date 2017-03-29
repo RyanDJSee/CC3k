@@ -10,7 +10,7 @@ class Observer {
   virtual void notify(Subject &whoNotified) = 0;
   // wN called this.notify(wN), this should do sth on wN
   virtual SubType subtype() const = 0;
-  // returns either DP or CL
+  // returns either CELL or FLOOR
   virtual ~Observer() = default;
 };
 
