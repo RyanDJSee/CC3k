@@ -9,16 +9,18 @@ Class Floor;
 Class Cell;
 
 class Game {
-  Floor *currFloor;
+  shared_ptr<Floor> currFloor;
   int currFloornum;
-  PC *pc; //only uses getInfo
+  shared_ptr<PC> pc; //only uses getInfo
 
 public:
   Game();
-  void GameInit(string char);//needs new character, start from floor 1
+  void GameInit(string PC);//needs new character, start from floor 1
+  void UsePotion(string dir);
+  void Attack(string dir);
+  void EnemySwitch();
   void Restart();
   void MoveChar(string dir);
-  void isWon();
   ~Game();
 };
 
