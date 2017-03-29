@@ -3,11 +3,11 @@
 
 #include "cell.h"
 
-class Passage: public Cell {
-  
+class Passage final: public Cell {
+
 public:
   Passage(int chamber, int r, int c); //constructor
-  char getRep() const override; //returns the text representation of this
+  string getRep() const override; //returns the text representation of this
 
 };
 

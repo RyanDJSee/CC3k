@@ -2,12 +2,14 @@
 #define STAIR_H
 
 #include "cell.h"
+#include <string>
+using namespace std;
 
-class Stair: public Cell {
+class Stair final: public Cell {
 
 public:
   Stair(int chamber, int r, int c); //constructor
-  char getRep() const override; //returns the text representation of this
+  string getRep() const override; //returns the text representation of this
 
 };
 

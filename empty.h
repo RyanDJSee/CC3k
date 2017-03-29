@@ -2,13 +2,15 @@
 #define EMPTY_H
 
 #include "cell.h"
+#include <string>
+using namespace std;
 
-class Empty: public Cell {
+class Empty final: public Cell {
 
 public:
   Empty(int chamber, int r, int c); //constructor
   bool isEmpty() const override;
-  char getRep() const override; //returns the text representation of this
+  string getRep() const override; //returns the text representation of this
 
 
 };

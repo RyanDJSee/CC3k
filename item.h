@@ -8,13 +8,13 @@ class Item: public Cell {
   int amount const;
 public:
   Item(int amt); //constructor
-  int getHP() const; // return the HP amount in this
-  int getAtk() const; // return the Atk amount in this
-  int getDef() const; // return the Def amount in this
-  int getGold() const; // return the HP amount in this
+  virtual int getHP() const; // return the HP amount in this
+  virtual int getAtk() const; // return the Atk amount in this
+  virtual int getDef() const; // return the Def amount in this
+  virtual int getGold() const; // return the HP amount in this
   StepType Steppable() const;
   //returns the StepType of this: CantStep/PickUp/WalkOver
-
+  virtual ~Item()= default;
 };
 
 

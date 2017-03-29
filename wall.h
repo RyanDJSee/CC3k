@@ -5,12 +5,12 @@
 #include <string>
 using namespace std;
 
-class Wall: public Cell {
-  string rep;
+class Wall final: public Cell {
+  string rep const;
 
 public:
   Wall(int chamber, int r, int c, string rep); //constructor
-  char getRep() const override; //returns the text representation of this
+  string getRep() const override; //returns the text representation of this
 
 };
 
