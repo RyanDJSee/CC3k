@@ -3,12 +3,13 @@ using namespace std;
 
 class RESTART;
 
-int main() {// need to add args
+int main(int argc, char* argv[]) {// need to add args
   cin.exceptions(ios::eofbit|ios::failbit);
 
   try{
     game g;
     string cmd;
+    string filename="";
 
     while (true) {
       cin>>cmd;
@@ -16,9 +17,13 @@ int main() {// need to add args
       if (cmd == "q") {
         return 0;//terminate
 
-      }else if (cmd == "s" || cmd == "d" ||
+      } else if (cmd == "s" || cmd == "d" ||
       cmd == "v" || cmd == "g" ||cmd == "t"){
-        GameInit(cmd); //creates first floor and enemies
+        //check if there is an input floor
+        if(argc>1) {
+          filename=argv[1];
+        }
+        GameInit(cmd, filename); //creates first floor and enemies
         while (true) {
           cin>>cmd;
 
@@ -40,6 +45,7 @@ int main() {// need to add args
           } else if (cmd == "q") {
             return 0;//terminate
           }//else ignore
+          catch(...){}//ignore invalid input
         }
       } //else ignore
       catch (RESTART) {}//continue (before game)

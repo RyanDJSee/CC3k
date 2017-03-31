@@ -20,7 +20,7 @@ void Game::GameInit(string character, string filename="") {//needs new character
   } else if (character=="t") {
     pc = make_shared<Troll{-1, -1, -1}>;
   }
-  currFloor = make_shared<Floor(1, pc)>;
+  currFloor = make_shared<Floor(filename,1, pc)>;
   currFloor->FloorInit(filename);
 }
 
