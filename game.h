@@ -15,7 +15,7 @@ class Game {
 
 public:
   Game();
-  void GameInit(string PC);//needs new character, start from floor 1
+  void GameInit(string PC, string filename="");//needs new character, start from floor 1
   void UsePotion(string dir);
   void Attack(string dir);
   void EnemySwitch();

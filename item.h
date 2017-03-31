@@ -7,7 +7,6 @@ class StepType;
 class Item: public Cell {
   int amount const;
 public:
-  Item(int amt); //constructor
   virtual int getHP() const; // return the HP amount in this
   virtual int getAtk() const; // return the Atk amount in this
   virtual int getDef() const; // return the Def amount in this
