@@ -3,16 +3,31 @@
 
 #include "subtype.h"
 #include <memory>
+#include <vector>
 using namespace std;
 class Info;
 class Observer;
-class SubType
+class SubType;
+class Human;
+class Dwarf;
+class Halfling;
+class Elf;
+class Orc;
+class Merchant;
 
 class Subject {
   vector<shared_ptr<Observer>> observers;
  public:
   void attach(shared_ptr<Observer> o); //add o as observer of this
   void notifyObservers(SubType t);
+  //default do nothing: only implemented in PC
+  virtual void AttackedBy(Human &hu);
+  virtual void AttackedBy(Dwarf &dw);
+  virtual void AttackedBy(Halfling &half);
+  virtual void AttackedBy(Elf &elf);
+  virtual void AttackedBy(Orc &orc);
+  virtual void AttackedBy(Merchant &mer);
+
   virtual ~Subject() = 0;
 };
 

@@ -24,9 +24,3 @@ int Item::getDef() const { // return the Def amount in this
 int Item::getGold() const{ // return the HP amount in this
   return 0; //defult
 }
-
-
-StepType Item::Steppable() const {
-  //returns the StepType of this: CantStep/PickUp/WalkOver
-  return CantStep; //default, for potions
-}

@@ -11,7 +11,7 @@ class Wall final: public Cell {
 public:
   Wall(int chamber, int r, int c, string rep); //constructor
   string getRep() const override; //returns the text representation of this
-
+  StepType Steppable() const;
 };
 
 #endif

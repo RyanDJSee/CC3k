@@ -12,3 +12,8 @@ Passage::Passage(int chamber, int r, int c): Cell(chamber, r, c}){}
 string Passage::getRep() const { //returns the text representation of this
   return "#";
 }
+
+
+StepType Passage::Steppable() const {
+  return WalkOver;
+}

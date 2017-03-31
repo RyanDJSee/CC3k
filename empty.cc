@@ -16,3 +16,8 @@ bool Empty::isEmpty() const {
 string Empty::getRep() const { //returns the text representation of this
   return ".";
 }
+
+
+StepType Empty::Steppable() const{
+  return PickUp;
+}

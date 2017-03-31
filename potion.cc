@@ -11,3 +11,8 @@ Potion::Potion(int chamber, int row, int col, int amt) :
 string Potion::getRep() const {
   return "P";
 }
+
+StepType Potion::Steppable() const {
+  //returns the StepType of this: CantStep/PickUp/WalkOver
+  return CantStep; //default, for potions
+}

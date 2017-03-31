@@ -10,7 +10,7 @@ class Door final: public Cell {
 public:
   Door(int chamber, int r, int c); //constructor
   string getRep() const override; //returns the text representation of this
-
+  StepType Steppable() const override;
 };
 
 #endif

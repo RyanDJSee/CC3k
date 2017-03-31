@@ -10,6 +10,7 @@ public:
   Potion(int chamber, int row, int col, int amt);
   string getRep() const override; //returns the text representation of this
   virtual ~Potion()=default;
+  StepType Steppable() const;
 };
 
 #endif

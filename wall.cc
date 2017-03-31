@@ -11,3 +11,8 @@ Wall(int chamber, int r, int c, stringrep):
 string Wall::getRep() const { //returns the text representation of this
   return rep;
 }
+
+
+StepType Wall::Steppable() const{
+  return CantStep;
+}

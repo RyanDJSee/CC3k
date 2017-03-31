@@ -4,6 +4,8 @@
 #include "observer.h"
 #include <string>
 #include <vector>
+#include "subtype.h"
+#include "steptype.h"
 using namespace std;
 
 
@@ -20,8 +22,8 @@ void Cell::setPos(int r, int c){ //update location for this
 virtual vector<int> getPos(){
   //return position as a vector [row,col]
   vector<int> v;
-  v.enplace_back(row);
-  v.enplace_back(col);
+  v.emplace_back(row);
+  v.emplace_back(col);
   return v;
 }
 
@@ -48,3 +50,16 @@ SubType Cell::subtype() const{
   //returns the SubType of this: DP/CL
   return CL;
 }
+
+
+bool Cell::Moved() const{//returns true if has been Moved
+  return moved;
+}
+
+
+void Cell::setMove(bool status) {//change moved to status
+    moved=status;
+  }
+
+
+virtual void Cell::use(shared_ptr<item>){}//default: nothing
