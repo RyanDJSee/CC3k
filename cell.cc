@@ -6,6 +6,9 @@
 using namespace std;
 
 
+Cell::Cell(int chamber, int row, int col):
+      chamber{chamber}, row{row}, col{col} {}
+
 void Cell::setPos(int r, int c){ //update location for this
   row=r;
   col=c;
@@ -23,7 +26,7 @@ bool Cell::isEmpty() const { //whether this is empty
 }
 
 
-StepType Cell::Steppable() const{ 
+StepType Cell::Steppable() const{
   //returns the StepType of this: CantStep/PickUp/WalkOver
   //default:CantStep
   return CantStep;

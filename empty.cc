@@ -4,8 +4,8 @@
 using namespace std;
 
 
-Empty::Empty(int chamber, int r, int c): Cell(),
-              chamber{chamber}, row{r}, col{c} {} //constructor
+Empty::Empty(int chamber, int r, int c): Cell(chamber, r, c) {}
+  //constructor
 
 
 bool Empty::isEmpty() const {

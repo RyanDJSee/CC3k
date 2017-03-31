@@ -2,7 +2,7 @@
 #include "treasure.h"
 
 Treasure::Treasure(int chamber, int r, int c, int amt):
-      Item(), chamber{chamber}, row{r}, col{c}, amt{amt} {}
+      Item(chamber, r, c, amt) {}
       //constructor
 
 

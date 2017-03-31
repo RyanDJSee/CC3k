@@ -2,7 +2,7 @@
 #include "ph.h"
 
 PH::PH(int chamber, int r, int c, int amt=-10):
-      Potion(), chamber{chamber}, row{r}, col{c}, amt{amt} {} //constructor, default amt is for cell on Floor
+      Potion(chamber, r, c, amt) {} //constructor, default amt is for cell on Floor
 
 
 void PH::notify(Subject &whoNotified) override {

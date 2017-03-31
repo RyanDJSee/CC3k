@@ -3,7 +3,7 @@
 
 
 BD::BD(int chamber, int r, int c, int amt=5):
-      Potion(), chamber{chamber}, row{r}, col{c}, amt{amt} {} //constructor, default amt is for cell on Floor
+      Potion(chamber,r, c, amt) {} //constructor, default amt is for cell on Floor
 
 
 void BD::notify(Subject &whoNotified) override {

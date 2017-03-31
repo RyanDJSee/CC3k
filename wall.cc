@@ -4,8 +4,8 @@
 using namespace std;
 
 
-Wall(int chamber, int r, int c): Cell(),
-                chamber{chamber}, row{r}, col{c}, rep{rep} {} //constructor
+Wall(int chamber, int r, int c, stringrep):
+        Cell(chamber, r, c), rep{rep} {} //constructor
 
 
 string Wall::getRep() const { //returns the text representation of this

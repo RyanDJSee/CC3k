@@ -4,7 +4,7 @@
 #include "potion.h"
 class Subject;
 
-class WD: public Potion {
+class WD final: public Potion {
   static bool wasUsed; //whether the type of this potion has been used before
 
 public:

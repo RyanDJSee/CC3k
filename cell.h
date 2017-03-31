@@ -14,6 +14,7 @@ class Cell : public Subject, public Observer {
   int col;
 
  public:
+  Cell(int chamber, int row, int col);//constructor
   virtual void setPos(int chamber=-1, int r, int c); //update location for this
   void notify(Subject &whoNotified) override; //default behaviour
   // wN called this.notify(wN), this should do sth on wN

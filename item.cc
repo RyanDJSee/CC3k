@@ -3,6 +3,9 @@
 #include "steptype.h"
 
 
+Item::Item(int chamber, int row, int col, int amt) :
+              Cell(chamber, row, col), amount{amt} {}
+
 int Item::getHP() const { // return the HP amount in this
     return 0; //defult
   }
