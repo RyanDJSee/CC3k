@@ -3,15 +3,26 @@
 #include "subject.h"
 #include "observer.h"
 #include <string>
+#include <vector>
 using namespace std;
 
 
 Cell::Cell(int chamber, int row, int col):
       chamber{chamber}, row{row}, col{col} {}
 
+
 void Cell::setPos(int r, int c){ //update location for this
   row=r;
   col=c;
+}
+
+
+virtual vector<int> getPos(){
+  //return position as a vector [row,col]
+  vector<int> v;
+  v.enplace_back(row);
+  v.enplace_back(col);
+  return v;
 }
 
 
