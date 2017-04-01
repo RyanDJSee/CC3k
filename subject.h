@@ -41,7 +41,7 @@ public:
   virtual void attackedBy(Vampire& vampire);
   virtual void attackedBy(Troll& troll);
   virtual void attackedBy(Drow& drow);
-
+  virtual SubType subtype() const=0;
   virtual ~Subject() = 0;
 };
 

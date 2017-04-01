@@ -1,6 +1,8 @@
 #ifndef _PC_H_
 #define _PC_H_
 #include "character.h"
+#include <string>
+using namespace std;
 
 class Human;
 class Dwarf;
