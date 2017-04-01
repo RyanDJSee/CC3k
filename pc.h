@@ -8,13 +8,13 @@ class Elf;
 class Orcs;
 class Merchant;
 class Dragon;
-class Halfing;
+class Halfling;
 
 class PC: public Character {
 
     public:
     PC(int chamber, int row, int col, int hp, int atk, int def, int maxHP);
-    char getRep();
+    string getRep() const;
 
     virtual void attackedBy(Human& human);
     virtual void attackedBy(Dwarf& dwarf);

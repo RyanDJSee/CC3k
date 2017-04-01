@@ -1,5 +1,6 @@
 #include "shade.h"
 #include "pc.h"
+#include <memory>
 #include <string>
 using namespace std;
 

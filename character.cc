@@ -4,7 +4,7 @@
 using namespace std;
 
 
-Character::Character(int chamber, int row, int col, int hp, int atk, int def, int maxHP): 
+Character::Character(int chamber, int row, int col, int hp, int atk, int def, int maxHP):
     Cell{chamber, row, col}, atk{atk}, def{def} {
     shared_ptr<RH> hp_ptr = make_shared{new RH{-1, -1, -1, hp}};
     properties.emplace_back(hp_ptr);
@@ -50,7 +50,7 @@ Info Character::getInfo() {
 
 
 void Character::use(shared_ptr<Item> item) {
-    if (dynamic_pointer_cast<Drow>(this)) { // for Drow, all potions have their effect magnified by 1.5
+    if (dynamic_pointer_cast<Drow>(shared_from_this())) { // for Drow, all potions have their effect magnified by 1.5
 	int amt = item->getHP() + item->getAtk() + item->getDef() + item->getGold();
 	shared_ptr<Item> item_ptr = make_shared{new Item{-1, -1, -1, 1.5*amt}};
     }
@@ -58,7 +58,7 @@ void Character::use(shared_ptr<Item> item) {
     int newAtk = item->getAtk();
     int newDef = item->getDef();
 
-    if (dynamic_pointer_cast<PC>(this)) { //if the character is PC
+    if (dynamic_pointer_cast<PC>(shared_from_this())) { //if the character is PC
 	if (!dynamic_pointer_cast<Vampire>) { // if the character is not vampire
 	    if (getInfo().hp + newHP > maxHP) { // if the item is HP, check if exceed maxHP
 		newHP = maxHP - getInfo().hp;
@@ -76,18 +76,25 @@ void Character::use(shared_ptr<Item> item) {
 	} else { // otherwise, add the item to properties with no change
 	    properties.emplace_back(item);
 	}
-	if (isDead()) { throw END; } // if PC is dead, throw an exception 
-    } 
-    
+	if (isDead()) { throw END; } // if PC is dead, throw an exception
+    }
+
     else { // if the character is Enemy
-	properties.emplace_back(item);  
+	properties.emplace_back(item);
 	if (isDead()) { // if the enemy is dead
-	    if (dynamic_pointer_cast<Dragon>(this)) {
+	    if (dynamic_pointer_cast<Dragon>(shared_from_this())) {
 		observers[1]->detachall();
 	    }
 	    notifyObs(SubType::FLOOR); // notify floor to remove the enemy from floor
 	}
     }
 }
+
+
+StepType Character::Steppable() const {
+  //returns the StepType of this: CantStep/PickUp/WalkOver
+  return StepType::CantStep; //default, for charaters
+}
+
 
 Character::~Character() {}

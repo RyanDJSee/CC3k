@@ -1,13 +1,20 @@
 #ifndef _ELF_H_
 #define _ELF_H_
 #include "enemy.h"
+#include <string>
 
 class Subject;
+class Shade;
+class globin;
+class Vampire;
+class Troll;
 
-class Elf: public Enemy {
+class Elf final: public Enemy {
 
     public:
-    Elf(int r, int c);
+    Elf(int chamber, int r, int c);
+    std::string getRep() override;
+
     void notify(Subject& whoNotified) override;
 
     void attackedBy(Shade& shade) override;

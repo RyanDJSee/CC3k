@@ -10,7 +10,7 @@
 class Character: public Cell {
 
     protected:
-    std::vector<Item*> properties;
+    std::vector<shared_ptr<Item>> properties;
     int atk;
     int def;
     int maxHP;
@@ -22,7 +22,7 @@ class Character: public Cell {
     bool isDead();
     void use(shared_ptr<Item>); // use potion on character
     bool isSuccessAttacked(); // U{0,1} RNG; if 1, then true; if 0, then false
-
+    StepType Steppable() const override;
     virtual ~Character();
 };
 

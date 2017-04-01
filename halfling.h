@@ -1,13 +1,21 @@
 #ifndef _HALFING_H_
 #define _HALFING_H_
 #include "enemy.h"
+#include <string>
 
 class Subject;
+class Shade;
+class Globin;
+class Vampire;
+class Troll;
+class Drow;
 
-class Enemy: public Enemy {
+class Halfling final: public Enemy {
 
     public:
-    Halfing(int r, int c);
+    Halfling(int chamber, int r, int c);
+    std::string getRep() override;
+
     void notify(Subject& whoNotified) override;
 
     void attackedBy(Shade& shade) override;
@@ -16,7 +24,7 @@ class Enemy: public Enemy {
     void attackedBy(Troll& troll) override;
     void attackedBy(Drow& drow) override;
 
-    ~Halfing();
+    ~Halfling();
 };
 
 #endif
