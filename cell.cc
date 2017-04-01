@@ -4,8 +4,10 @@
 #include "observer.h"
 #include <string>
 #include <vector>
+#include <memory>
 #include "subtype.h"
 #include "steptype.h"
+#include "cell.h"
 using namespace std;
 
 
@@ -13,7 +15,7 @@ Cell::Cell(int chamber, int row, int col):
       chamber{chamber}, row{row}, col{col} {}
 
 
-void Cell::setPos(int r, int c, int cham=-1){ //update location for this
+void Cell::setPos(int r, int c, int cham){ //update location for this
   if (cham!=-1) {
     chamber=cham;
   }
@@ -22,7 +24,7 @@ void Cell::setPos(int r, int c, int cham=-1){ //update location for this
 }
 
 
-virtual vector<int> getPos(){
+vector<int> Cell::getPos() const{
   //return position as a vector [row,col]
   vector<int> v;
   v.emplace_back(row);
@@ -31,7 +33,7 @@ virtual vector<int> getPos(){
 }
 
 
-void Cell::notify(Subject &whoNotified) override {}
+void Cell::notify(Subject &whoNotified){}
   // wN called this.notify(wN), this should do sth on wN
   // default behaviour:do nothing
 
@@ -58,4 +60,4 @@ void Cell::setMove(bool status) {//change moved to status
   }
 
 
-virtual void Cell::use(shared_ptr<item>){}//default: nothing
+void Cell::use(shared_ptr<Item>){}//default: nothing

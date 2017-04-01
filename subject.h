@@ -18,6 +18,7 @@ class Goblin;
 class Vampire;
 class Troll;
 class Drow;
+class Dragon;
 
 
 class Subject {
@@ -34,6 +35,7 @@ public:
   virtual void attackedBy(Elf &elf);
   virtual void attackedBy(Orc &orc);
   virtual void attackedBy(Merchant &mer);
+  virtual void attackedBy(Dragon &dra);
   virtual void attackedBy(Shade& shade);
   virtual void attackedBy(Goblin& goblin);
   virtual void attackedBy(Vampire& vampire);

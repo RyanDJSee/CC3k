@@ -33,6 +33,7 @@ virtual void Subject::attackedBy(Halfling &half){}
 virtual void Subject::attackedBy(Elf &elf){}
 virtual void Subject::attackedBy(Orc &orc){}
 virtual void Subject::attackedBy(Merchant &mer){}
+virtual void Subject::attackedBy(Dragon &dra){}
 virtual void Subject::attackedBy(Shade& shade){}
 virtual void Subject::attackedBy(Goblin& goblin) {}
 virtual void Subject::attackedBy(Vampire& vampire) {}

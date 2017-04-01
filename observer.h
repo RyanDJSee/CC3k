@@ -2,8 +2,9 @@
 #define OBSERVER_H
 
 #include "subtype.h"
+#include <string>
+using namespace std;
 class Subject;
-class Cell;
 
 class Observer {
  public:

@@ -2,16 +2,18 @@
 #define GAME_H
 
 #include <string>
+#include <memory>
 using namespace std;
 
-
-Class Floor;
-Class Cell;
+class PC;
+class Floor;
+class Cell;
 
 class Game {
   shared_ptr<Floor> currFloor;
   int currFloornum;
-  shared_ptr<PC> pc; //only uses getInfo
+  shared_ptr<Cell> pc; //only uses getInfo
+  string file;
 
 public:
   Game();

@@ -2,25 +2,32 @@
 #include <memory>
 #include "RESTART.h"
 #include "game.h"
-#include "Shade.h"
+#include "shade.h"
+#include "drow.h"
+#include "vampire.h"
+#include "troll.h"
+#include "NEXTFLOOR.h"
+#include "END.h"
+#include "floor.h"
 using namespace std;
 
 Game::Game(): currFloor(nullptr), currFloornum(1), pc(nullptr) {}
 
 
-void Game::GameInit(string character, string filename="") {//needs new character, start from floor 1
+void Game::GameInit(string character, string filename) {//needs new character, start from floor 1
   if (character=="s") {
-    pc = make_shared{new Shade{-1, -1, -1}};
+    pc = make_shared<Shade>(-1, -1, -1);
   } else if (character=="d") {
-    pc = make_shared{new Drow{-1, -1, -1}};
+    pc = make_shared<Drow>(-1, -1, -1);
   } else if (character=="v") {
-    pc = make_shared{new Vampire{-1, -1, -1}};
+    pc = make_shared<Vampire>(-1, -1, -1);
   } else if (character=="g") {
-    pc = make_shared{new Goblin{-1, -1, -1}};
+    pc = make_shared<Goblin>(-1, -1, -1);
   } else if (character=="t") {
-    pc = make_shared{new Troll{-1, -1, -1}};
+    pc = make_shared<Troll>(-1, -1, -1);
   }
-  currFloor = make_shared{new Floor(filename,currFloornum,pc)};
+  file=filename;
+  currFloor = make_shared<Floor>(currFloornum,pc,filename);
   if (filename==""){
     currFloor->FloorInit();
   }
@@ -34,30 +41,30 @@ void Game::UsePotion(string dir){
 
 
 void Game::Attack(string dir){
-  currFloor->Attack(dir);
+  currFloor->attack(dir);
   currFloor->clearaction();
 }
 
 
 void Game::EnemySwitch(){
-  currFloor->EnemySwitch();
+  currFloor->EnermySwitch();
 }
 
 
 void Game::Restart(){
-  throw RESTART;
+  throw RESTART();
 }
 
 
 void Game::MoveChar(string dir){
   try {
-    currFloor->Floormove(pc, dir);
+    currFloor->FloorMove(dir);
   } catch (NEXTFLOOR &next){
     ++currFloornum;
     if (currFloornum>=6) {
       throw END();
     } else{
-      currFloor = make_shared{new Floor(filename,currFloornum,pc)};
+      currFloor = make_shared<Floor>(currFloornum,pc,filename);
     }
   }
   currFloor->clearaction();
