@@ -6,9 +6,11 @@
 #include "item.h"
 #include "cell.h"
 #include "info.h"
+#include "subtype.h"
 
-class Character: public Cell {
-
+class Character: public Cell 
+    , public std::enable_shared_from_this<Character>
+{
     protected:
     std::vector<shared_ptr<Item>> properties;
     int atk;
@@ -22,6 +24,7 @@ class Character: public Cell {
     bool isDead();
     void use(shared_ptr<Item>); // use potion on character
     bool isSuccessAttacked(); // U{0,1} RNG; if 1, then true; if 0, then false
+    StepType Steppable() const;
 
     virtual ~Character();
 };
