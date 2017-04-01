@@ -27,12 +27,17 @@ void Subject::notifyObservers(SubType t) {
 }
 
 
-virtual void Subject::AttackedBy(Human &hu){}
-virtual void Subject::AttackedBy(Dwarf &dw){}
-virtual void Subject::AttackedBy(Halfling &half){}
-virtual void Subject::AttackedBy(Elf &elf){}
-virtual void Subject::AttackedBy(Orc &orc){}
-virtual void Subject::AttackedBy(Merchant &mer){}
+virtual void Subject::attackedBy(Human &hu){}
+virtual void Subject::attackedBy(Dwarf &dw){}
+virtual void Subject::attackedBy(Halfling &half){}
+virtual void Subject::attackedBy(Elf &elf){}
+virtual void Subject::attackedBy(Orc &orc){}
+virtual void Subject::attackedBy(Merchant &mer){}
+virtual void Subject::attackedBy(Shade& shade){}
+virtual void Subject::attackedBy(Goblin& goblin) {}
+virtual void Subject::attackedBy(Vampire& vampire) {}
+virtual void Subject::attackedBy(Troll& troll){}
+virtual void Subject::attackedBy(Drow& drow){}
 
 
 Subject:: ~Subject() {}

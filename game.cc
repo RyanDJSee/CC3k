@@ -10,15 +10,15 @@ Game::Game(): currFloor(nullptr), currFloornum(1), pc(nullptr) {}
 
 void Game::GameInit(string character, string filename="") {//needs new character, start from floor 1
   if (character=="s") {
-    pc = make_shared<Shade{-1, -1, -1}>;
+    pc = make_shared{new Shade{-1, -1, -1}};
   } else if (character=="d") {
-    pc = make_shared<Drow{-1, -1, -1}>;
+    pc = make_shared{new Drow{-1, -1, -1}};
   } else if (character=="v") {
-    pc = make_shared<Vampire{-1, -1, -1}>;
+    pc = make_shared{new Vampire{-1, -1, -1}};
   } else if (character=="g") {
-    pc = make_shared<Goblin{-1, -1, -1}>;
+    pc = make_shared{new Goblin{-1, -1, -1}};
   } else if (character=="t") {
-    pc = make_shared<Troll{-1, -1, -1}>;
+    pc = make_shared{new Troll{-1, -1, -1}};
   }
   currFloor = make_shared{new Floor(filename,currFloornum,pc)};
   if (filename==""){

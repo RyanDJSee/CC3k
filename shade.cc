@@ -1,0 +1,13 @@
+#include "shade.h"
+#include "pc.h"
+#include <string>
+using namespace std;
+
+
+Shade::Shade(int chamber, int r, int c):
+    PC(chamber, r, c, 125, 25, 25, 125) {}
+
+// whoNotified notifies that it can be attacked
+void Shade::notify(Subject& whoNotified) {
+  whoNotified.attackedBy(*this);
+}

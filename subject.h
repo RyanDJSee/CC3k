@@ -13,21 +13,32 @@ class Halfling;
 class Elf;
 class Orc;
 class Merchant;
+class Shade;
+class Goblin;
+class Vampire;
+class Troll;
+class Drow;
+
 
 class Subject {
 protected:
   vector<shared_ptr<Observer>> observers;
- public:
+public:
   void attach(shared_ptr<Observer> o); //add o as observer of this
   void dettachall();//detatch all observers
   void notifyObservers(SubType t);
   //default do nothing: only implemented in PC
-  virtual void AttackedBy(Human &hu);
-  virtual void AttackedBy(Dwarf &dw);
-  virtual void AttackedBy(Halfling &half);
-  virtual void AttackedBy(Elf &elf);
-  virtual void AttackedBy(Orc &orc);
-  virtual void AttackedBy(Merchant &mer);
+  virtual void attackedBy(Human &hu);
+  virtual void attackedBy(Dwarf &dw);
+  virtual void attackedBy(Halfling &half);
+  virtual void attackedBy(Elf &elf);
+  virtual void attackedBy(Orc &orc);
+  virtual void attackedBy(Merchant &mer);
+  virtual void attackedBy(Shade& shade);
+  virtual void attackedBy(Goblin& goblin);
+  virtual void attackedBy(Vampire& vampire);
+  virtual void attackedBy(Troll& troll);
+  virtual void attackedBy(Drow& drow);
 
   virtual ~Subject() = 0;
 };
