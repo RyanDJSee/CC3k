@@ -1,13 +1,14 @@
 #ifndef _ENEMY_H_
 #define _ENEMY_H
 #include "character.h"
-#include "subject.h"
+
 
 class Shade;
 class Goblin;
 class Vampire;
 class Troll;
 class Drow;
+class Subject;
 
 class Enemy: public Character {
 

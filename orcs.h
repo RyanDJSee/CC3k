@@ -4,10 +4,10 @@
 
 class Subject;
 
-class Orcs: public Enemy {
+class Orcs final: public Enemy {
 
     public:
-    Orcs(int r, int c);
+    Orcs(int chamber,int r, int c);
     void notify(Subject& whoNotified) override;
 
     ~Orcs();

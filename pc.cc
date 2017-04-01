@@ -28,44 +28,44 @@ void PC::attackedBy(Human& human) {
     use(hp_ptr);
 }
 
-virtual void PC::attackedBy(Dwarf& dwarf) {
+void PC::attackedBy(Dwarf& dwarf) {
     if (!isSuccessAttacked()) return;
     int damage = ceil((100/(100+ getInfo().def))*dwarf.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }
 
-virtual void PC::attackedBy(Elf& elf) {
+void PC::attackedBy(Elf& elf) {
     if (!isSuccessAttacked()) return;
     int damage = ceil((100/(100+ getInfo().def))*elf.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }
 
-virtual void PC::attackedBy(Orcs& orcs) {
+void PC::attackedBy(Orcs& orcs) {
     if (!isSuccessAttacked()) return;
     int damage = ceil((100/(100+ getInfo().def))*orcs.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }
 
-virtual void PC::attackedBy(Merchant& merchant) {
+void PC::attackedBy(Merchant& merchant) {
     if (!isSuccessAttacked()) return;
     int damage = ceil((100/(100+ getInfo().def))*merchant.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }
 
-virtual void PC::attackedBy(Dragon& dragon) {
+void PC::attackedBy(Dragon& dragon) {
     if (!isSuccessAttacked()) return;
     int damage = ceil((100/(100+ getInfo().def))*dragon.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }
 
-virtual void PC::attackedBy(Halfling& halfling) {
+void PC::attackedBy(Halfling& halfling) {
     if (!isSuccessAttacked()) return;
-    int damage = ceil((100/(100+ getInfo().def))*halfing.getInfo().atk);
+    int damage = ceil((100/(100+ getInfo().def))*halfling.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }

@@ -14,12 +14,12 @@ class Halfling final: public Enemy {
 
     public:
     Halfling(int chamber, int r, int c);
-    std::string getRep() override;
+    std::string getRep() const;
 
     void notify(Subject& whoNotified) override;
 
     void attackedBy(Shade& shade) override;
-    void attackedBy(Globin& globin) override;
+    void attackedBy(Goblin& goblin) override;
     void attackedBy(Vampire& vampire) override;
     void attackedBy(Troll& troll) override;
     void attackedBy(Drow& drow) override;

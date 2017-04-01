@@ -9,7 +9,7 @@ class Dwarf final: public Enemy {
 
     public:
     Dwarf(int chamber, int r, int c);
-    std::string getRep() override;
+    std::string getRep() const;
     void notify(Subject& whoNotified) override;
 
     ~Dwarf();

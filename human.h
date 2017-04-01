@@ -9,7 +9,7 @@ class Human final: public Enemy {
 
     public:
     Human(int chamber, int r, int c);
-    std::string getRep() override;
+    std::string getRep() const;
     void notify(Subject& whoNotified) override;
 
     ~Human();
@@ -17,4 +17,3 @@ class Human final: public Enemy {
 };
 
 #endif
-

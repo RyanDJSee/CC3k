@@ -10,7 +10,7 @@ class Dragon final: public Enemy {
     public:
     Dragon(int chamber, int r, int c);
     void notify(Subject& whoNotified) override;
-    std::string getRep();
+    std::string getRep() const;
 
     ~Dragon();
 };
