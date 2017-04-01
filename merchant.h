@@ -1,14 +1,22 @@
 #ifndef _MERCHANT_H_
 #define _MERCHANT_H_
 #include "enemy.h"
+#include <string>
 
 class Subject;
+class Shade;
+class Globin;
+class Vampire;
+class Troll;
+class Drow;
 
-class Merchant: public Enemy {
+class Merchant final: public Enemy {
     static bool isHostile;
 
     public:
-    Merchant(int r, int c);
+    Merchant(int chamber, int r, int c);
+    std::string getRep() override;
+
     void notify(Subject& whoNotified) override;
 
     void attackedBy(Shade& shade) override;

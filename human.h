@@ -1,12 +1,15 @@
 #ifndef _HUMAN_H_
 #define _HUMAN_H_
 #include "enemy.h"
+#include <string>
 
-class Human: public Enemy {
+class Subject;
+
+class Human final: public Enemy {
 
     public:
     Human(int chamber, int r, int c);
-    char getRep() override;
+    std::string getRep() override;
     void notify(Subject& whoNotified) override;
 
     ~Human();

@@ -10,7 +10,7 @@
 class Character: public Cell {
 
     protected:
-    std::vector<items*> properties;
+    std::vector<shared_ptr<Item>> properties;
     int atk;
     int def;
     int maxHP;
