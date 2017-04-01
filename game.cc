@@ -29,11 +29,13 @@ void Game::GameInit(string character, string filename="") {//needs new character
 
 void Game::UsePotion(string dir){
   currFloor->UsePotion(dir);
+  currFloor->clearaction();
 }
 
 
 void Game::Attack(string dir){
   currFloor->Attack(dir);
+  currFloor->clearaction();
 }
 
 
@@ -58,4 +60,5 @@ void Game::MoveChar(string dir){
       currFloor = make_shared{new Floor(filename,currFloornum,pc)};
     }
   }
+  currFloor->clearaction();
 }

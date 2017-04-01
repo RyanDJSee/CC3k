@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-  ifstream fin{"cc3kfloor.txt"};
+  /*  ifstream fin{"cc3kfloor.txt"};
   char c;
   while(fin.get(c)){
     if(c=='\n'){
@@ -14,5 +14,8 @@ int main() {
     } else {
       cout<<"saw: "<<c<<endl;
     }
-  }
+    }*/
+
+  int a=32;
+  cout<<a<<endl;
 }

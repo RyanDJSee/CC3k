@@ -19,6 +19,7 @@ protected:
   vector<shared_ptr<Observer>> observers;
  public:
   void attach(shared_ptr<Observer> o); //add o as observer of this
+  void dettachall();//detatch all observers
   void notifyObservers(SubType t);
   //default do nothing: only implemented in PC
   virtual void AttackedBy(Human &hu);

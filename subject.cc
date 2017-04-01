@@ -9,6 +9,14 @@ void Subject::attach(shared_ptr<Observer> o) {
 }
 
 
+void Subject::dettachall(){
+  int len=observers.size();
+  for (int i=0;i<len;++i){
+    observers.pop_back();
+  }
+}
+
+
 void Subject::notifyObservers(SubType t) {
   //go through all observers and notify ones with type t
   for (auto ob : observers) {
