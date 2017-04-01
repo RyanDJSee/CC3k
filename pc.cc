@@ -1,47 +1,62 @@
-#ifndef _PC_H_
-#define _PC_H_
 #include "character.h"
+#include "subType.h"
 
-class PC: public Character {
-        int maxPH;
-	    bool wasDragonHoard;
+using namespace std;
 
-	        public:
-	        void attackedBy(Human& hu) = 0;
-		    void attackedBy(Dwarf& hu) = 0;
-		        void attackedBy(Elf& hu) = 0;
-			    void attackedBy(Orcs& hu) = 0;
-			        void attackedBy(Merchant& hu) = 0;
-				    void attackedBy(Dragon& hu) = 0;
-				        void attackedBy(Halfling& hu) = 0;
+PC::PC(int row, int col, int hp, int atk, int def, int maxPH): 
+    Character{chamber, row, col, hp, atk, def, maxHP} {}
 
-					    void usedOn(Human& hu) = 0;
-					        void usedOn(Dwarf& hu) = 0;
-						    void usedOn(Elf& hu) = 0;
-						        void usedOn(Orcs& hu) = 0;
-							    void usedOn(Merchant& hu) = 0;
-							        void usedOn(Dragon& hu) = 0;
-								    void usedOn(Halfling& hu) = 0;
+char PC::getRep() { return '@'; }
 
-};
-
-#endif
-
-PC::PC(in):
-    Character(int chamber, int r, int c, int hp, int atk, int def), maxHP{maxHP} {}
-//was dragon hoard?
-
-char PC::getRep() {
-    return '@';
+void PC::attackedBy(Human& human) { 
+    if (!isSuccessAttacked()) return;
+    int damage = ceil((100/(100+ getInfo().def))*human.getInfo().atk);
+    shared_ptr<Item> hp_ptr = make_shared{new RH{-1, -1, -1, -damage}};
+    use(hp_ptr);
 }
 
-void PC::addHP(int hp, int maxHP) {
-    if (this->hp + hp >= maxHP) {
-	this->hp maxHP;
-    } else {
-	this->hp += hp;
-    }
+virtual void PC::attackedBy(Dwarf& dwarf) { 
+    if (!isSuccessAttacked()) return;
+    int damage = ceil((100/(100+ getInfo().def))*dwarf.getInfo().atk);
+    shared_ptr<Item> hp_ptr = make_shared{new RH{-1, -1, -1, -damage}};
+    use(hp_ptr);
 }
 
+virtual void PC::attackedBy(Elf& elf) {  
+    if (!isSuccessAttacked()) return;
+    int damage = ceil((100/(100+ getInfo().def))*elf.getInfo().atk);
+    shared_ptr<Item> hp_ptr = make_shared{new RH{-1, -1, -1, -damage}};
+    use(hp_ptr);
+}
+
+virtual void PC::attackedBy(Orcs& orcs) {
+    if (!isSuccessAttacked()) return;
+    int damage = ceil((100/(100+ getInfo().def))*orcs.getInfo().atk);
+    shared_ptr<Item> hp_ptr = make_shared{new RH{-1, -1, -1, -damage}};
+    use(hp_ptr);
+}
+
+virtual void PC::attackedBy(Merchant& merchant) { 
+    if (!isSuccessAttacked()) return;
+    int damage = ceil((100/(100+ getInfo().def))*merchant.getInfo().atk);
+    shared_ptr<Item> hp_ptr = make_shared{new RH{-1, -1, -1, -damage}};
+    use(hp_ptr);
+}
+
+virtual void PC::attackedBy(Dragon& dragon) { 
+    if (!isSuccessAttacked()) return;
+    int damage = ceil((100/(100+ getInfo().def))*dragon.getInfo().atk);
+    shared_ptr<Item> hp_ptr = make_shared{new RH{-1, -1, -1, -damage}};
+    use(hp_ptr);
+}
+
+virtual void PC::attackedBy(Halfling& halfling) {
+    if (!isSuccessAttacked()) return;
+    int damage = ceil((100/(100+ getInfo().def))*halfing.getInfo().atk);
+    shared_ptr<Item> hp_ptr = make_shared{new RH{-1, -1, -1, -damage}};
+    use(hp_ptr);
+}
+
+PC::~PC() {}
 
 

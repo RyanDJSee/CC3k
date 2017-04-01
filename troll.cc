@@ -1,14 +1,12 @@
-#include "shade.h"
+#include "troll.h"
 #include <string>
 using namespace std;
 
 
-Shade(int r, int c):
-    PC(r, c, 125, 25, 25, 125} {}
+Troll(int r, int c):
+    PC(r, c, 120, 25, 15, 120} {}
 
 // whoNotified notifies that it can be attacked
-void Shade::notify(Subject& whoNotified) {
+void Troll::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
-
-

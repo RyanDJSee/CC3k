@@ -1,16 +1,16 @@
-#ifndef _SHADE_H_
-#define _SHADE_H_
+#ifndef _TROLL_H_
+#define _TROLL_H_
 #include "pc.h"
 
 class Subject;
 
-class Shade: public PC {
-    
+class Troll: public PC {
+
     public:
-    Shade(int r, int c);
+    Troll(int r, int c);
     void notify(Subject& whoNotified) override;
 
-    ~Shade();
+    ~Troll();
 };
 
 #endif

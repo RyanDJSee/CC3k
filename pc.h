@@ -2,43 +2,28 @@
 #define _PC_H_
 #include "character.h"
 
+class Human;
+class Dwarf;
+class Elf;
+class Orcs;
+class Merchant;
+class Dragon;
+class Halfing;
+
 class PC: public Character {
 
-    protected:
-    int maxPH;
-    bool wasDragonHoard;
-
     public:
-    PC();
+    PC(int chamber, int row, int col, int hp, int atk, int def, int maxHP);
     char getRep();
 
-    void attackedBy(Human& human) = 0;
-    void attackedBy(Dwarf& dwarf) = 0;
-    void attackedBy(Elf& elf) = 0;
-    void attackedBy(Orcs& orcs) = 0;
-    void attackedBy(Merchant& merchant) = 0;
-    void attackedBy(Dragon& dragon) = 0;
-    void attackedBy(Halfling& halfling) = 0;
+    virtual void attackedBy(Human& human);
+    virtual void attackedBy(Dwarf& dwarf);
+    virtual void attackedBy(Elf& elf);
+    virtual void attackedBy(Orcs& orcs);
+    virtual void attackedBy(Merchant& merchant);
+    virtual void attackedBy(Dragon& dragon);
+    virtual void attackedBy(Halfling& halfling);
 
-    void usedOn(Human& human) = 0;
-    void usedOn(Dwarf& dwarf) = 0;
-    void usedOn(Elf& elf) = 0;
-    void usedOn(Orcs& orcs) = 0;
-    void usedOn(Merchant& merchant) = 0;
-    void usedOn(Dragon& dragon) = 0;		
-    void usedOn(Halfling& halfling) = 0;
-
-#if 0
-    void usePotion(Treasure& t) = 0;
-    void usePotion(RH& rh) = 0;
-    void usePotion(BA& ba) = 0;
-    void usePotion(BD& bd) = 0;
-    void usePotion(PH& ph) = 0;
-    void usePotion(WA& wa) = 0;
-    void usePotion(WD& wd) = 0;
-#endif
-
-    void addHP(int hp, int maxHP);
     virtual ~PC();
 };
 

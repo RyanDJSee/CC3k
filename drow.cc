@@ -1,14 +1,12 @@
-#include "shade.h"
+#include "drow.h"
 #include <string>
 using namespace std;
 
 
-Shade(int r, int c):
-    PC(r, c, 125, 25, 25, 125} {}
+Drow(int r, int c):
+    PC(r, c, 150, 25, 15, 150} {}
 
 // whoNotified notifies that it can be attacked
-void Shade::notify(Subject& whoNotified) {
+void Drow::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
-
-
