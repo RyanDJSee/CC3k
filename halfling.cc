@@ -15,7 +15,7 @@ using namespace std;
 Halfling::Halfling(int chamber, int r, int c):
     Enemy{chamber, r, c, 100, 15, 20} {}
 
-string Halfling::getRep() { return "L"; }
+string Halfling::getRep() const { return "L"; }
 
 void Halfling::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
