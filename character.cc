@@ -40,7 +40,7 @@ void Character::clearPotion() {
 	} else {
 	    ++i;
 	}
-	if (properties.size() == i) break;
+	if ((int)properties.size() == i) break;
     }
 }
 
@@ -64,8 +64,8 @@ Info Character::getInfo() const{
 
 
 void Character::use(shared_ptr<Item> item) {
-    dynamic_pointer_cast<Item>(item);
-    if (dynamic_pointer_cast<Drow>(shared_from_this())) { // for Drow, all potions have their effect magnified by 1.5
+  auto thisptr=shared_from_this();
+    if (dynamic_pointer_cast<Drow>(thisptr)) { // for Drow, all potions have their effect magnified by 1.5
 	int amt = (item->getHP() + item->getAtk() + item->getDef() + item->getGold())*1.5;
 	if (item->getHP() != 0) { shared_ptr<Item> item_ptr{new RH{-1, -1, -1, amt}}; }
 	if (item->getAtk() != 0) { shared_ptr<Item> item_ptr{new BA{-1, -1, -1, amt}}; }
@@ -76,8 +76,8 @@ void Character::use(shared_ptr<Item> item) {
     int newAtk = item->getAtk();
     int newDef = item->getDef();
 
-    if (dynamic_pointer_cast<PC>(shared_from_this())) { //if the character is PC
-	if (!dynamic_pointer_cast<Vampire>(shared_from_this())) { // if the character is not vampire
+    if (dynamic_pointer_cast<PC>(thisptr)) { //if the character is PC
+	if (!dynamic_pointer_cast<Vampire>(thisptr)) { // if the character is not vampire
 	    if (getInfo().hp + newHP > maxHP) { // if the item is HP, check if exceed maxHP
 		newHP = maxHP - getInfo().hp;
 		shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, newHP}};
@@ -100,7 +100,7 @@ void Character::use(shared_ptr<Item> item) {
     else { // if the character is Enemy
 	properties.emplace_back(item);
 	if (isDead()) { // if the enemy is dead
-	    if (dynamic_pointer_cast<Dragon>(shared_from_this())) {
+	    if (dynamic_pointer_cast<Dragon>(thisptr)) {
 		dynamic_pointer_cast<Subject>(observers[1])->dettachall();
 	    }
 	    notifyObservers(SubType::FLOOR); // notify floor to remove the enemy from floor
