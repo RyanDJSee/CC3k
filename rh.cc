@@ -4,6 +4,8 @@
 using namespace std;
 
 
+bool RH::wasUsed=false;
+
 
 RH::RH(int chamber, int r, int c, int amt):
       Potion(chamber, r, c, amt) {} //constructor, default amt is for cell on Floor

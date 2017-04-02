@@ -3,6 +3,10 @@
 #include <memory>
 using namespace std;
 
+
+bool WA::wasUsed=false;
+
+
 WA::WA(int chamber, int r, int c, int amt):
       Potion(chamber, r, c, amt) {} //constructor, default amt is for cell on Floor
 

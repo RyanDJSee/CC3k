@@ -27,6 +27,9 @@ int main(int argc, char* argv[]) {// need to add args
           if(argc>1) {
             filename=argv[1];
           }
+#ifdef D
+          cout<<"gameinit"<<endl;
+#endif
           g.GameInit(cmd, filename); //creates first floor and enemies
           while (true) {
             try{
@@ -60,11 +63,24 @@ int main(int argc, char* argv[]) {// need to add args
               } else if (cmd == "q") {
                 return 0;//terminate
               }//else ignore
-            } catch(...){}//ignore invalid input
+            } catch(...){
+#ifdef D
+              cout<<cmd<<"invalid"<<endl;
+              throw;
+#endif
+            }//ignore invalid input
           }
         }
       } //else ignore
-      catch (RESTART &re) {}//continue (before game)
+      catch (RESTART &re) {
+#ifdef D
+        throw;
+#endif
+      }//continue (before game)
     }
-  } catch (...) { return 0; }
+  } catch (...) {
+#ifdef D
+    throw;
+#endif
+  }//return 0; }
 }

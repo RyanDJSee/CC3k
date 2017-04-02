@@ -4,6 +4,9 @@
 using namespace std;
 
 
+bool BA::wasUsed=false;
+
+
 BA::BA(int chamber, int r, int c, int amt):
       Potion(chamber, r, c, amt) {} //constructor, default amt is for cell on Floor
 
