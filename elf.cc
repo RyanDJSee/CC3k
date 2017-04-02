@@ -15,6 +15,8 @@ Elf::Elf(int chamber, int r, int c):
 
 string Elf::getRep() const{ return "W"; }
 
+string Elf::getName() { return "Elf"; }
+
 void Elf::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }

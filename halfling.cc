@@ -17,6 +17,8 @@ Halfling::Halfling(int chamber, int r, int c):
 
 string Halfling::getRep() const { return "L"; }
 
+string Halfling::getName() { return "Halfling"; }
+
 void Halfling::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }

@@ -13,3 +13,5 @@ string Human::getRep() const{ return "H"; }
 void Human::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
+
+string Human::getName() { return "Human"; }

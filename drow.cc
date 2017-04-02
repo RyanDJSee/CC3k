@@ -10,3 +10,5 @@ Drow::Drow(int chamber, int r, int c):
 void Drow::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
+
+string Drow::getName() { return "Drow"; }

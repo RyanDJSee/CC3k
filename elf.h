@@ -14,6 +14,7 @@ class Elf final: public Enemy {
     public:
     Elf(int chamber, int r, int c);
     std::string getRep() const;
+    std::string getName() override;
 
     void notify(Subject& whoNotified) override;
 

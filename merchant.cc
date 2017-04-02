@@ -17,6 +17,8 @@ Merchant::Merchant(int chamber, int r, int c):
 
 string Merchant::getRep() const { return "M"; }
 
+string Merchant::getName() { return "Merchant"; }
+
 void Merchant::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }

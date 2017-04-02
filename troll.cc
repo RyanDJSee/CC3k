@@ -10,3 +10,5 @@ Troll::Troll(int chamber, int r, int c):
 void Troll::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
+
+string Troll::getName() { return "Troll"; }

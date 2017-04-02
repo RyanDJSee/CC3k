@@ -12,3 +12,5 @@ Shade::Shade(int chamber, int r, int c):
 void Shade::notify(Subject& whoNotified) {
   whoNotified.attackedBy(*this);
 }
+
+string Shade::getName() { return "Shade"; }

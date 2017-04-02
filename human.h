@@ -11,6 +11,7 @@ class Human final: public Enemy {
     Human(int chamber, int r, int c);
     std::string getRep() const;
     void notify(Subject& whoNotified) override;
+    std::string getName() override;
 
     ~Human();
 

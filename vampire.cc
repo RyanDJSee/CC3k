@@ -19,3 +19,5 @@ void Vampire::attackedBy(Dwarf& dwarf) {
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }
+
+string Vampire::getName() { return "Vampire"; }

@@ -11,3 +11,5 @@ string Dwarf::getRep() const{ return "W"; }
 void Dwarf::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
+
+string Dwarf::getName() { return "Dwarf"; }

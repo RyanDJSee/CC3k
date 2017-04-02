@@ -11,6 +11,7 @@ class Dwarf final: public Enemy {
     Dwarf(int chamber, int r, int c);
     std::string getRep() const;
     void notify(Subject& whoNotified) override;
+    std::string getName() override;
 
     ~Dwarf();
 };
