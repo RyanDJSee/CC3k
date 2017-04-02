@@ -31,23 +31,6 @@ bool Character::isDead() {
     return false;
 }
 
-#if 0
-void Character::clearPotion() {
-    int i = 1;
-    int ii = properties.size() - i;
-    int erase_i = 1;
-
-    while (i >= 0) {
-	if (!dynamic_pointer_cast<RH>(properties.at(i))) {
-    	    properties.erase(i);
-	    --i;
-	} else {
-	    --i;
-	}
-    }
-}
-#endif
-
 void Character::clearPotion() {
     int i = 1;
     while (true) {
