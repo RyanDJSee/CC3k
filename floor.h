@@ -8,11 +8,10 @@
 #include <vector>
 #include "subtype.h"
 #include "steptype.h"
-using namespace std;
 
 class Cell;
 
-class Floor:enable_shared_from_this<Floor> {
+class Floor: public std::enable_shared_from_this<Floor> {
 	const int floorNum;
 	const int board_row = 80;
 	const int board_col = 25;
