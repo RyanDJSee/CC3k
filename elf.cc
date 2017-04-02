@@ -13,7 +13,7 @@ using namespace std;
 Elf::Elf(int chamber, int r, int c):
     Enemy{chamber, r, c, 140, 30, 10} {}
 
-string Elf::getRep() { return "W"; }
+string Elf::getRep() const { return "W"; }
 
 void Elf::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
