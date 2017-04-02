@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <string>
 #include <fstream>
 #include "floor.h"
@@ -86,10 +87,10 @@ Floor::Floor(int floorNum, shared_ptr<PC> pc, string filename): floorNum{floorNu
         }
 	theFloor[9][43] = make_shared<Door>(2,9, 43);
 	theFloor[9][43]->setPos(9,43,2);
-	theFloor[9][43]->attach(& theFloor);
+	theFloor[9][43]->attach(shared_from_this());
 	theFloor[13][43] = make_shared<Door>(2,13,43);
 	theFloor[13][43]->setPos(13,43,2);
-	theFloor[13][43]->attach(& theFloor);
+	theFloor[13][43]->attach(shared_from_this());
 
 	//Building third Chamber
 	int rowChamber3_start = 14; 
@@ -105,10 +106,10 @@ Floor::Floor(int floorNum, shared_ptr<PC> pc, string filename): floorNum{floorNu
         }
 	theFloor[14][13] = make_shared<Door>(3,14,13);
 	theFloor[14][13]->setPos(14,13,3);
-	theFloor[14][13]->attach(& theFloor);
+	theFloor[14][13]->attach(shared_from_this());
 	theFloor[20][25] = make_shared<Door>(3, 20, 25);
 	theFloor[20][25]->setPos(20,25,3);
-	theFloor[20][25]->attach(& theFloor);
+	theFloor[20][25]->attach(shared_from_this());
 
 	//Building fourth Chamber
 	int rowChamber4_start = 2;
@@ -134,10 +135,10 @@ Floor::Floor(int floorNum, shared_ptr<PC> pc, string filename): floorNum{floorNu
 	}
 	theFloor[7][43] = make_shared<Door>(4 , 7, 43);
 	theFloor[7][43]->setPos(7,43,4);
-	theFloor[7][43]->attach(& theFloor);
+	theFloor[7][43]->attach(shared_from_this());
 	theFloor[11][60] = make_shared<Door>( 4 , 11 ,60);
 	theFloor[11][60]->setPos(11,60,4);
-	theFloor[11][60]->attach(& theFloor);
+	theFloor[11][60]->attach(shared_from_this());
 	theFloor[13][69] = make_shared<Door>( 4, 13 , 69);
 	theFloor[13][69]->setPos(13,69,4);
 	theFloor[13][69]->attach(& theFloor);
@@ -164,13 +165,13 @@ Floor::Floor(int floorNum, shared_ptr<PC> pc, string filename): floorNum{floorNu
 	Build_Wall(rowChamber5_end, colChamber5_start, colChamber5_end,5 );
 	theFloor[15][69] = make_shared<Door>(5, 15,69);
 	theFloor[15][69]->setPos(15,69,5);
-	theFloor[15][69]->attach(& theFloor);
+	theFloor[15][69]->attach(shared_from_this());
 	theFlooor[18][43] = make_shared<Door>(5,18,43);
 	theFloor[18][43]->setPos(18,43,5);
-	theFloor[18][43]->attach(& theFloor);
+	theFloor[18][43]->attach(shared_from_this());
 	theFloor[20][36] = make_shared<Door>(5, 20, 36);
 	theFloor[20][36]->setPos(20,36,5);
-	theFloor[20][36]->attach(& theFloor);
+	theFloor[20][36]->attach(shared_from_this());
 
 	//Building board passage between CHAMBER
 	Build_Passage(4, 30, 8, "verti"); //between 1 & 4
@@ -194,11 +195,11 @@ void Floor::Build_Passage(int row, int col , int counter, string direction){
 	if (direction == "hori"){
 		theFloor[row+i][col]=  make_shared<Passage>(0, row+i, col);
 		theFloor[row+i][col]->setPos(row+i, col,0);
-		theFloor[row+1][col]->attach(& theFloor);
+		theFloor[row+1][col]->attach(shared_from_this());
 	}else if (direction =="verti"){
 		theFloor[row][col+i] = make_shared<Passage>(0, row, col + i);
 		theFloor[row][col+i]->setPos(row, col+i,0);
-		theFloor[row][col+i]->attach(& theFloor);
+		theFloor[row][col+i]->attach(shared_from_this());
 	}
    }
 }
@@ -209,7 +210,7 @@ void Floor::Build_Wall(int row, int start, int end, int chamber){
 	for ( int i = start + 1; i < end ; i ++){
 		theFloor[row][i] = make_shared<Wall>(chamber, row , i , "-");
 		theFloor[row][i]->setPos(row, i,chamber);
-		theFloor[row][i]->attach(& theFloor);
+		theFloor[row][i]->attach(shared_from_this());
 	}
 }
 
@@ -219,7 +220,7 @@ void Floor::Build_Room(int row, int start, int end,int chamber){
 	for ( int i = start + 1; i < end; i++){
 		theFloor[row][i] = make_shared<Empty>(chamber, row, i);
 		theFloor[row][i]->setPos(row, i,chamber);
-		theFloor[row][i]->attach(& theFloor);
+		theFloor[row][i]->attach(shared_from_this());
 	}
 }
 
