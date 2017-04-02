@@ -6,13 +6,14 @@
 #include <string>
 #include <stdlib.h>
 #include <vector>
+#include "Observer.h"
 #include "subtype.h"
 #include "steptype.h"
 using namespace std;
 
 class Cell;
 
-class Floor: public std::enable_shared_from_this<Floor> {
+class Floor: public Observer, public std::enable_shared_from_this<Floor> {
 	const int floorNum;
 	const int board_row = 80;
 	const int board_col = 25;
