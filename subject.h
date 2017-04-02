@@ -25,9 +25,9 @@ class Subject {
 protected:
   std::vector<std::shared_ptr<Observer>> observers;
 public:
-  void attach(std::shared_ptr<Observer> o); //add o as observer of this
-  void dettachall();//detatch all observers
-  void notifyObservers(SubType t);
+  virtual void attach(std::shared_ptr<Observer> o); //add o as observer of this
+  virtual void dettachall();//detatch all observers
+  virtual void notifyObservers(SubType t);
   //default do nothing: only implemented in PC
   virtual void attackedBy(Human &hu);
   virtual void attackedBy(Dwarf &dw);
