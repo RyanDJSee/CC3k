@@ -9,7 +9,7 @@ class Dragon final: public Enemy {
 
     public:
     Dragon(int chamber, int r, int c);
-    void notify(Subject& whoNotified) override;
+    void notify(std::shared_ptr<Subject>& whoNotified) override;
     std::string getRep() const;
     std::string getName() const override;
 

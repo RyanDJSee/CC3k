@@ -8,6 +8,7 @@
 #include <math.h>
 #include "rh.h"
 #include "item.h"
+#include <memory>
 
 
 using namespace std;
@@ -19,8 +20,8 @@ string Halfling::getRep() const { return "L"; }
 
 string Halfling::getName() const { return "Halfling"; }
 
-void Halfling::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Halfling::notify(std::shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 void Halfling::attackedBy(Shade& shade) {

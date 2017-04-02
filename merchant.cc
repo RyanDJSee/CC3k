@@ -7,6 +7,7 @@
 #include "drow.h"
 #include "troll.h"
 #include "rh.h"
+#include <memory>
 
 using namespace std;
 
@@ -19,8 +20,8 @@ string Merchant::getRep() const { return "M"; }
 
 string Merchant::getName() const { return "Merchant"; }
 
-void Merchant::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Merchant::notify(shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 void Merchant::attackedBy(Shade& shade) {

@@ -6,6 +6,7 @@
 #include <string>
 #include <math.h>
 #include "rh.h"
+#include <memory>
 
 
 using namespace std;
@@ -17,8 +18,8 @@ string Elf::getRep() const{ return "W"; }
 
 string Elf::getName() const { return "Elf"; }
 
-void Elf::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Elf::notify(shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 void Elf::attackedBy(Shade& shade) {

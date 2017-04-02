@@ -1,5 +1,6 @@
 #include "dwarf.h"
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -8,8 +9,8 @@ Dwarf::Dwarf(int chamber, int r, int c):
 
 string Dwarf::getRep() const{ return "W"; }
 
-void Dwarf::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Dwarf::notify(shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 string Dwarf::getName() const { return "Dwarf"; }

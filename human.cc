@@ -1,5 +1,6 @@
 #include "human.h"
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -10,8 +11,8 @@ Human::Human(int chamber, int r, int c):
 
 string Human::getRep() const{ return "H"; }
 
-void Human::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Human::notify(shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 string Human::getName() const { return "Human"; }

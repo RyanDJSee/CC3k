@@ -1,5 +1,6 @@
 #include "orc.h"
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -8,8 +9,8 @@ Orc::Orc(int chamber, int r, int c):
 
 string Orc::getRep() const { return "O"; }
 
-void Orc::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Orc::notify(shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 string Orc::getName() const { return "Orc"; }

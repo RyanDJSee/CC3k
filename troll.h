@@ -9,7 +9,7 @@ class Troll final: public PC {
 
     public:
     Troll(int chamber, int r, int c);
-    void notify(Subject& whoNotified) override;
+    void notify(std::shared_ptr<Subject>& whoNotified) override;
     std::string getName() const override;
 
     ~Troll();

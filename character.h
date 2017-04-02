@@ -20,7 +20,7 @@ class Character: public Cell, public std::enable_shared_from_this<Character>{
     void clearPotion(); //clear temporary potions when move to next floor
     Info getInfo() const; //get info of a character
     bool isDead() const;
-    void use(std::shared_ptr<Item>); // use potion on character
+    void use(std::shared_ptr<Item>) override; // use potion on character
     bool isSuccessAttacked() const; // U{0,1} RNG; if 1, then true; if 0, then false
     StepType Steppable() const;
 

@@ -9,8 +9,8 @@ using namespace std;
 Vampire::Vampire(int chamber, int r, int c):
     PC(chamber, r, c, 50, 25, 25, -100) {}
 
-void Vampire::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Vampire::notify(shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 void Vampire::attackedBy(Dwarf& dwarf) {

@@ -11,7 +11,7 @@ class Orc final: public Enemy {
     Orc(int chamber,int r, int c);
     std::string getRep() const;
     std::string getName() const override;
-    void notify(Subject& whoNotified) override;
+    void notify(std::shared_ptr<Subject>& whoNotified) override;
 
     ~Orc();
 };

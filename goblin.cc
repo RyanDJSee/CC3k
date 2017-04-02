@@ -11,8 +11,8 @@ Goblin::Goblin(int chamber, int r, int c):
     PC(chamber, r, c, 110, 15, 25, 110) {}
 
 // whoNotified notifies that it can be attacked
-void Goblin::notify(Subject& whoNotified) {
-    whoNotified.attackedBy(*this);
+void Goblin::notify(shared_ptr<Subject>& whoNotified) {
+    whoNotified->attackedBy(*this);
 }
 
 void Goblin::attackedBy(Orc& orc) { // Orcs does 50% more damage to globins

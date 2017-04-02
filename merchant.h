@@ -18,7 +18,7 @@ class Merchant final: public Enemy {
     std::string getRep() const;
     std::string getName() const override;
 
-    void notify(Subject& whoNotified) override;
+    void notify(std::shared_ptr<Subject>& whoNotified) override;
 
     void attackedBy(Shade& shade) override;
     void attackedBy(Goblin& goblin) override;

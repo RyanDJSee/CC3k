@@ -63,7 +63,8 @@ Info Character::getInfo() const{
 }
 
 
-void Character::use(shared_ptr<Cell> item) {
+void Character::use(shared_ptr<Item> item) {
+    dynamic_pointer_cast<Item>(item);
     if (dynamic_pointer_cast<Drow>(shared_from_this())) { // for Drow, all potions have their effect magnified by 1.5
 	int amt = (item->getHP() + item->getAtk() + item->getDef() + item->getGold())*1.5;
 	if (item->getHP() != 0) { shared_ptr<Item> item_ptr{new RH{-1, -1, -1, amt}}; }

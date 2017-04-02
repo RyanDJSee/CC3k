@@ -10,7 +10,7 @@ class Goblin final: public PC {
 
     public:
     Goblin(int chamber, int r, int c);
-    void notify(Subject& whoNotified) override;
+    void notify(std::shared_ptr<Subject>& whoNotified) override;
     void attackedBy(Orc& orc) override;
     std::string getName() const override;
 
