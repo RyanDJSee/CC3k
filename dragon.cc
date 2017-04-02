@@ -12,4 +12,3 @@ string Dragon::getRep() const { return "D"; }
 void Dragon::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
-

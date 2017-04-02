@@ -1,5 +1,7 @@
 #include "item.h"
 #include "treasure.h"
+#include <string>
+using namespace std;
 
 Treasure::Treasure(int chamber, int r, int c, int amt):
       Item(chamber, r, c, amt) {}

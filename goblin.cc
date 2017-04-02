@@ -1,5 +1,5 @@
 #include "goblin.h"
-#include "orcs.h"
+#include "orc.h"
 #include <string>
 #include <math.h>
 #include <memory>
@@ -15,9 +15,8 @@ void Goblin::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
-void Goblin::attackedBy(Orcs& orcs) { // Orcs does 50% more damage to globins
+void Goblin::attackedBy(Orc& orc) { // Orcs does 50% more damage to globins
     if (!isSuccessAttacked()) return;
     int damage = ceil((100/(100+ getInfo().def))*orc.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, (int)ceil(-1.5*damage)}};
-    use(hp_ptr);
 }

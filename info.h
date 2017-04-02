@@ -2,12 +2,11 @@
 #define _INFO_H_
 
 struct Info {
-    int row;
-    int col;
-    int gold;
-    int hp;
-    int atk;
-    int def;
+    std::string name="";
+    int gold=0;;
+    int hp=0;
+    int atk=0;
+    int def=0;
 };
 
 #endif

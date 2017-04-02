@@ -4,15 +4,15 @@
 #include "cell.h"
 #include "steptype.h"
 #include <string>
-using namespace std;
+
 
 
 class Wall final: public Cell {
-  const string rep;
+  const std::string rep;
 
 public:
   Wall(int chamber, int r, int c, string rep); //constructor
-  string getRep() const override; //returns the text representation of this
+  std::string getRep() const override; //returns the text representation of this
   StepType Steppable() const;
 };
 

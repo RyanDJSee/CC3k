@@ -4,6 +4,7 @@
 #include "game.h"
 #include "shade.h"
 #include "drow.h"
+#include "goblin.h"
 #include "vampire.h"
 #include "troll.h"
 #include "NEXTFLOOR.h"

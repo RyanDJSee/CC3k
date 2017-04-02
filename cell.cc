@@ -55,7 +55,7 @@ bool Cell::Moved() const{//returns true if has been Moved
 }
 
 
-void Cell::setMove(bool status) {//change moved to status
+void Cell::setMoved(bool status) {//change moved to status
     moved=status;
   }
 

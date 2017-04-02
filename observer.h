@@ -3,7 +3,7 @@
 
 #include "subtype.h"
 #include <string>
-using namespace std;
+
 class Subject;
 
 class Observer {
@@ -12,7 +12,7 @@ class Observer {
   // wN called this.notify(wN), this should do sth on wN
   virtual SubType subtype() const = 0;
   // returns either CELL or FLOOR
-  virtual void addaction(string act);
+  virtual void addaction(std::string act);
   virtual ~Observer() = default;
 };
 

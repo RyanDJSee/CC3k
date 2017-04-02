@@ -7,7 +7,7 @@
 #include "observer.h"
 #include <string>
 #include <vector>
-using namespace std;
+
 
 class Item;
 
@@ -22,7 +22,7 @@ class Cell : public Subject, public Observer {
   virtual ~Cell() =default;
 
   virtual void setPos(int r, int c, int chamber=-1); //update location for this
-  virtual vector<int> getPos() const;//return position as a vector [row,col]
+  virtual std::vector<int> getPos() const;//return position as a vector [row,col]
 
   void notify(Subject &whoNotified) override; //default behaviour
   // wN called this.notify(wN), this should do sth on wN
@@ -32,11 +32,11 @@ class Cell : public Subject, public Observer {
   //returns the StepType of this: CantStep/PickUp/WalkOver
   SubType subtype() const; //returns the SubType of this: CELL/FLOOR
   bool Moved() const;//returns true if has been Moved
-  void setMove(bool status);
+  void setMoved(bool status);
 
-  virtual Info getInfo();//add const
-  virtual string getRep() const=0; //returns the text representation of this
-  virtual void use(shared_ptr<Item>);//default: nothing
+  virtual Info getInfo() const;//add const
+  virtual std::string getRep() const=0; //returns the text representation of this
+  virtual void use(std::shared_ptr<Item>);//default: nothing
 
 };
 

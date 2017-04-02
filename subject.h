@@ -4,7 +4,7 @@
 #include "subtype.h"
 #include <memory>
 #include <vector>
-using namespace std;
+
 class Info;
 class Observer;
 class Human;
@@ -23,9 +23,9 @@ class Dragon;
 
 class Subject {
 protected:
-  vector<shared_ptr<Observer>> observers;
+  std::vector<std::shared_ptr<Observer>> observers;
 public:
-  void attach(shared_ptr<Observer> o); //add o as observer of this
+  void attach(std::shared_ptr<Observer> o); //add o as observer of this
   void dettachall();//detatch all observers
   void notifyObservers(SubType t);
   //default do nothing: only implemented in PC

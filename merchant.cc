@@ -2,7 +2,7 @@
 #include <string>
 #include <math.h>
 #include "shade.h"
-#include "globin.h"
+#include "goblin.h"
 #include "vampire.h"
 #include "drow.h"
 #include "troll.h"

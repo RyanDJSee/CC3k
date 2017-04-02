@@ -8,6 +8,7 @@
 #include <vector>
 #include "subtype.h"
 #include "steptype.h"
+using namespace std;
 
 class Cell;
 
