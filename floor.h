@@ -2,12 +2,41 @@
 #define __FLOOR_H__
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <stdlib.h>
 #include <vector>
 #include "cell.h"
+#include "pc.h"
 #include "subtype.h"
 #include "steptype.h"
+
+//#include "door.h"
+class Door;
+class Passage;
+class Wall;
+class Empty;
+class Stair;
+
+class Enemy;
+class Hafling;
+class Human;
+class Elf;
+class Orc;
+class Merchant;
+class Dragon;
+class Dwarf;
+class Treasure;
+
+class Potion;
+class RH;
+class BA;
+class BD;
+class PH;
+class WA;
+class WD;
+
+
 
 class Floor:enable_shared_from_this<Floor> {
 	const int floorNum;
@@ -15,8 +44,8 @@ class Floor:enable_shared_from_this<Floor> {
 	const int board_col = 25;
 	int pc_row;
 	int pc_col;
-	void Build_Wall(int row, int start, int end); //done
-	void Build_Room(int row, int start, int end); //done
+	void Build_Wall(int row, int start, int end,int chamber); //done
+	void Build_Room(int row, int start, int end,int chamber); //done
 	void Build_Passage ( int row, int col, int counter, std::string direction); //done
 	void attach_chamber(shared_ptr<Cell> c, int chamber, int row, int col);//done
 	void subject_init(int chamber, int row, int col, std::string type); //done
@@ -33,7 +62,7 @@ class Floor:enable_shared_from_this<Floor> {
 	vector<int> getRandomPos(); //done
 
 public:
-	Floor( int floorNum, shared_ptr<Cell> pc, std::string Filename); //done
+	Floor(int floorNum, shared_ptr<Cell> pc,std::string Filename=""); //done
 	void FloorInit(); //done
 	void FloorMove(std::string direction); //done
 	~Floor();
