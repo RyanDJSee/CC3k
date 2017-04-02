@@ -67,10 +67,10 @@ Floor::Floor(int floorNum, shared_ptr<PC> pc, string filename): floorNum{floorNu
 	}
 	theFloor[4][29]=make_shared<Door>(1,4,29);
 	theFloor[4][29]->setPos(4,29,1);
-	theFloor[4][29]->attach(&theFloor);
+	theFloor[4][29]->attach(shared_from_this());
 	theFloor[7][13] = make_shared<Door>(1,7,13);
 	theFloor[7][13]->setPos(7,13,1);
-	theFloor[7][13]->attach(& theFloor);
+	theFloor[7][13]->attach(shared_from_this());
 	
 	//Building second Chamber
 	int rowChamber2_start = 9;
@@ -143,7 +143,7 @@ Floor::Floor(int floorNum, shared_ptr<PC> pc, string filename): floorNum{floorNu
 	theFloor[13][69]->attach(& theFloor);
 
 	//Building fifth Chamber
-	int rowchamber5_start = 15;
+	int rowChamber5_start = 15;
 	int rowChamber5_end = 22;
 	int colChamber5_start = 36;
 	int colChamber5_end = 76;
@@ -189,7 +189,7 @@ Floor::Floor(int floorNum, shared_ptr<PC> pc, string filename): floorNum{floorNu
 	}
 }
 
-void Floor:Build_Passage(int row, int col , int counter, string direction){
+void Floor::Build_Passage(int row, int col , int counter, string direction){
    for ( int i = 0 ; i< counter ; i++){
 	if (direction == "hori"){
 		theFloor[row+i][col]=  make_shared<Passage>(0, row+i, col);
@@ -291,7 +291,8 @@ void Floor::FloorInit(){
   //init pc
 	vector<int> pos = getRandomPos();
 	subject_init(pos[0], pos[1], pos[2], "PC");
-	attach_chamber(chamber+1, theFloor[pos[1]][pos[2]], pos[1], pos[2]);
+	attach_chamber(theFloor[pos[1]][pos[2]],pos[0], pos[1], pos[2]);
+
   //init stairway
 	pos = getRandomPos();
 	subject_init(pos[0], pos[1], pos[2], "STAIR");
@@ -308,7 +309,7 @@ void Floor::FloorInit(){
   // init ENERMY
 	for ( int i = 0; i < 20; i++){
 		pos = getRandomPos();
-		subject_init(pos[0], pos[1]. pos[2], "ENERMY");
+		subject_init(pos[0], pos[1], pos[2], "ENERMY");
 	}
 }
 
@@ -317,7 +318,6 @@ void Floor::subject_init(int chamber, int row, int col,string type){
 		theFloor[row][col]  = pc;
 		pc_row = row;
 		pc_col = col;
-		pc->createCharacter(chamber + 1, row, col, type)
 	}else if ( type == "STAIR"){
 		theFloor[row][col] = make_shared<Stair>(chamber, row, col);
 	}else if ( type == "POTIONS"){
