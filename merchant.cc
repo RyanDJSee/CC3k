@@ -2,7 +2,7 @@
 #include <string>
 #include <math.h>
 #include "shade.h"
-#include "globin.h"
+#include "goblin.h"
 #include "vampire.h"
 #include "drow.h"
 #include "troll.h"
@@ -15,7 +15,7 @@ Merchant::Merchant(int chamber, int r, int c):
     isHostile = false;
 }
 
-string Merchant::getRep() { return "M"; }
+string Merchant::getRep() const { return "M"; }
 
 void Merchant::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
@@ -31,11 +31,11 @@ void Merchant::attackedBy(Shade& shade) {
     }
 }
 
-void Merchant::attackedBy(Globin& globin) {        
+void Merchant::attackedBy(Goblin& goblin) {        
     if (isHostile == false) { 
 	isHostile = true;
     } else {    
-	int damage = ceil((100/(100 + getInfo().def))*globin.getInfo().atk);    
+	int damage = ceil((100/(100 + getInfo().def))*goblin.getInfo().atk);    
 	shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};    
 	use(hp_ptr);
     }

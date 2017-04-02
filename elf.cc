@@ -1,6 +1,6 @@
 #include "elf.h"
 #include "shade.h"
-#include "globin.h"
+#include "goblin.h"
 #include "vampire.h"
 #include "troll.h"
 #include <string>
@@ -13,7 +13,7 @@ using namespace std;
 Elf::Elf(int chamber, int r, int c):
     Enemy{chamber, r, c, 140, 30, 10} {}
 
-string Elf::getRep() { return "W"; }
+string Elf::getRep() const { return "W"; }
 
 void Elf::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
@@ -25,8 +25,8 @@ void Elf::attackedBy(Shade& shade) {
     use(hp_ptr);
 }
 
-void Elf::attackedBy(Globin& globin) {
-    int damage = ceil((100/(100 + getInfo().def))*globin.getInfo().atk);
+void Elf::attackedBy(Goblin& goblin) {
+    int damage = ceil((100/(100 + getInfo().def))*goblin.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -2*damage}};
     use(hp_ptr);
 }

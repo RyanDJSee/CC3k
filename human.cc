@@ -8,7 +8,7 @@ class Subject;
 Human::Human(int chamber, int r, int c):
     Enemy{chamber, r, c, 140, 20, 20} {}
 
-string Human::getRep() { return "H"; }
+string Human::getRep() const { return "H"; }
 
 void Human::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
