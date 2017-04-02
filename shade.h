@@ -10,7 +10,7 @@ class Shade final: public PC {
 public:
   Shade(int chamber, int r, int c);
   void notify(Subject& whoNotified) override;
-  std::string getName() override;
+  std::string getName() const override;
 
   ~Shade();
 };

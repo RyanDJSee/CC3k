@@ -14,4 +14,4 @@ void Human::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
-string Human::getName() { return "Human"; }
+string Human::getName() const { return "Human"; }

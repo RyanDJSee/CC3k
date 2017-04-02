@@ -11,4 +11,4 @@ void Drow::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
-string Drow::getName() { return "Drow"; }
+string Drow::getName() const { return "Drow"; }

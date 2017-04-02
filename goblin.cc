@@ -21,4 +21,4 @@ void Goblin::attackedBy(Orc& orc) { // Orcs does 50% more damage to globins
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, (int)ceil(-1.5*damage)}};
 }
 
-string Goblin::getName() { return "Goblin"; }
+string Goblin::getName() const { return "Goblin"; }

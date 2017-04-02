@@ -10,7 +10,7 @@ class Drow final: public PC {
     public:
     Drow(int chamber, int r, int c);
     void notify(Subject& whoNotified) override;
-    std::string getName() override;
+    std::string getName() const override;
 
     ~Drow();
 };

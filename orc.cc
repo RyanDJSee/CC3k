@@ -12,4 +12,4 @@ void Orc::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
-string Orc::getName() { return "Orc"; }
+string Orc::getName() const { return "Orc"; }

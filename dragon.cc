@@ -13,4 +13,4 @@ void Dragon::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
-string Dragon::getName() { return "Dragon"; }
+string Dragon::getName() const { return "Dragon"; }

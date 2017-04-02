@@ -12,4 +12,4 @@ void Dwarf::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
-string Dwarf::getName() { return "Dwarf"; }
+string Dwarf::getName() const { return "Dwarf"; }

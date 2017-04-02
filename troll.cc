@@ -11,4 +11,4 @@ void Troll::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
-string Troll::getName() { return "Troll"; }
+string Troll::getName() const { return "Troll"; }

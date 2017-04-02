@@ -15,7 +15,7 @@ class Halfling final: public Enemy {
     public:
     Halfling(int chamber, int r, int c);
     std::string getRep() const;
-    std::string getName() override;
+    std::string getName() const override;
 
     void notify(Subject& whoNotified) override;
 

@@ -11,7 +11,7 @@ class Vampire final: public PC {
     Vampire(int chamber, int r, int c);
     void notify(Subject& whoNotified) override;
     void attackedBy(Dwarf& dwarf) override;
-    std::string getName() override;
+    std::string getName() const override;
 
     ~Vampire();
 };

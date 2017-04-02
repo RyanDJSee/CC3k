@@ -20,4 +20,4 @@ void Vampire::attackedBy(Dwarf& dwarf) {
     use(hp_ptr);
 }
 
-string Vampire::getName() { return "Vampire"; }
+string Vampire::getName() const { return "Vampire"; }
