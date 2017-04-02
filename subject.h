@@ -43,6 +43,7 @@ public:
   virtual void attackedBy(Drow& drow);
   virtual SubType subtype() const=0;
   virtual ~Subject() = 0;
+  virtual std::vector<int> getPos() const;//return position as a vector [row,col]
 };
 
 #endif
