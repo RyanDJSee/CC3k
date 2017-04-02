@@ -3,6 +3,26 @@
 #include <string>
 #include <fstream>
 #include "floor.h"
+#include "cell.h"
+#include "pc.h"
+#include "shade.h"
+#include "goblin.h"
+#include "drow.h"
+#include "vampire.h"
+#include "troll.h"
+#include "human.h"
+#include "dwarf.h"
+#include "halfling.h"
+#include "elf.h"
+#include "orc.h"
+#include "merchant.h"
+#include "dragon.h"
+#include "rh.h"
+#include "ba.h"
+#include "bd.h"
+#include "ph.h"
+#include "wa.h"
+#include "wd.h"
 
 using namespace std;
 
@@ -11,7 +31,7 @@ using namespace std;
 Floor::~Floor(){}
 
 Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floorNum}, pc{pc}{
-	
+
 	if ( filename == ""){
 	//initialize empty space for each chamber
 	vector<int> C1;
@@ -72,7 +92,7 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
 	theFloor[7][13] = make_shared<Door>(1,7,13);
 	theFloor[7][13]->setPos(7,13,1);
 	theFloor[7][13]->attach(shared_from_this());
-	
+
 	//Building second Chamber
 	int rowChamber2_start = 9;
 	int rowChamber2_end = 13;
@@ -93,7 +113,7 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
 	theFloor[13][43]->attach(shared_from_this());
 
 	//Building third Chamber
-	int rowChamber3_start = 14; 
+	int rowChamber3_start = 14;
 	int rowChamber3_end = 22;
 	int colChamber3_start = 3;
 	int colChamber3_end = 25;
@@ -152,7 +172,7 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
 		if( i <= rowChamber5_start + 3){
 			if( i == rowChamber5_start){
 				Build_Wall(i, 64, colChamber5_end,5);
-			}else if ( i == rowChamber5_start + 3){		
+			}else if ( i == rowChamber5_start + 3){
 				Build_Wall(i, colChamber5_start, 64,5);
 				Build_Room(i, 64, colChamber5_end,5);
 			}else{
@@ -176,7 +196,7 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
 	//Building board passage between CHAMBER
 	Build_Passage(4, 30, 8, "verti"); //between 1 & 4
 	Build_Passage(8, 31, 13 , "verti");
-	Build_Passage(11, 13, 19, "verti"); 
+	Build_Passage(11, 13, 19, "verti");
 	Build_Passage(11, 54, 6, "verti");
 	Build_Passage(16, 31, 24, "verti");
 	Build_Passage(20, 26, 10, "verti");
@@ -267,24 +287,24 @@ void Floor:floor_given(string filename){
 			theFloor[row][col] = make_shared<BA>(0, row, col);
 		}else if ( s == '2'){
 			theFloor[row][col] = make_shared<BD>(0, row, col);
-		}else if ( s == '3'){		
+		}else if ( s == '3'){
 			theFloor[row][col] = make_shared<PH>(0,row, col);
-		}else if ( s == '4'){	
+		}else if ( s == '4'){
 			theFloor[row][col] = make_shared<WA>(0, row, col);
 		}else if ( s == '5'){
 			theFloor[row][col] = make_shared<WD>(0, row, col);
 		}else if ( s == '6'){
-			theFloor[row][col] = make_shared<Treasure>(0, row, col, 2, false); 
+			theFloor[row][col] = make_shared<Treasure>(0, row, col, 2, false);
 		}else if ( s == '7'){
 			theFloor[row][col] = make_shared<Treasure>(0, row, col, 1, false);
 		}else if ( s == '8'){
 			theFloor[row][col] = make_shared<Treasure>(0, row, col, 4, false);
 		}else if ( s == '9'){
 			theFloor[row][col] = make_shared<Treasure>(0, row, col, 6, true);
-		}		
+		}
 			theFloor[row][col]->setPos(row,col, 0);
 			theFloor[row][col]->notify( & theFloor);
-		col++; 
+		col++;
 	}
 }
 
@@ -302,7 +322,7 @@ void Floor::FloorInit(){
 		pos = getRandomPos();
 		subject_init(pos[0], pos[1], pos[2], "POTIONS");
 	}
-  // init GOLD 
+  // init GOLD
 	for ( int i = 0; i < 10; i++){
 		pos = getRandomPos();
 		subject_init(pos[0], pos[1], pos[2], "GOLD");
@@ -338,7 +358,7 @@ void Floor::subject_init(int chamber, int row, int col,string type){
 		}
 	}else if ( type == "GOLD"){
 		int gold_type = rand() % 8 + 1;
-		if ( gold_type <= 5){ //normal 
+		if ( gold_type <= 5){ //normal
 			theFloor[row][col] = make_shared<Treasure>(chamber, row, col, 2, false);
 		}else if (gold_type == 6){ //dragon hoard
 			theFloor[row][col] = make_shared<Treasure>(chamber, row, col, 6, true);
@@ -440,7 +460,7 @@ void Floor::summon_dragon(int chamber, int row, int col){
 	theFloor[pos_row][pos_col]->attach(& theFloor[row][col]);
 	theFloor[pos_row][pos_col]->getPos(chamber, pos_row, pos_col);
 	theFloor[row][col]->attach(& theFloor[pos_row][pos_col];
-} 
+}
 
 
 void Floor::attach_chamber(shared_ptr<Cell> c, int chamber, int row, int col){
@@ -458,7 +478,7 @@ void Floor::FloorMove(string direction){
 	//PC MOVE
 	int adjust_row = 0;
 	int adjust_col = 0;
-	if (direction == "no") { //north 
+	if (direction == "no") { //north
 		adjust_row = -1;
 		action = "north";
 	}else if(direction == "so"){ //south
@@ -487,7 +507,7 @@ void Floor::FloorMove(string direction){
 		adjust_col = -1;
 		action = "south west";
 	}else{ // exception
-		
+
 	}
 	int current_row = pc_row;
 	int current_col = pc_col;
@@ -508,8 +528,8 @@ void Floor::FloorMove(string direction){
 			if (prevCell.isEmpty() == false){
 				PC->use(prevCell);
 				prevCell = make_shared<Empty>(chamber, current_row, current_col);
-			}	
-		}		
+			}
+		}
 		theFloor[new_row][new_col] = pc;
 		attach_chamber(theFloor[new_row][new_col], chamber, new_row, new_col);
 		theFloor[new_row][new_col]->setPos(chamber, new_row, new_col);
@@ -518,7 +538,7 @@ void Floor::FloorMove(string direction){
 		action = "PC move to " + action ".";
 	}
 	//ENERMY
-	if ( freeze == false ){	
+	if ( freeze == false ){
 	enermy_move();
 	}
 }
@@ -536,12 +556,12 @@ void Floor::enermy_move(){
 				vector<int> temp = check_tile(i, j);
 				int new_row = temp[0];
 				int new_col = temp[1];
-				vector <int> info = theFloor[i][j]->getPos();		
+				vector <int> info = theFloor[i][j]->getPos();
 				shared_ptr<Cell> temp = theFloor[new_row][new_col];
 				theFloor[new_row][new_col] = theFloor[i][j];
 				theFloor[new_row][new_col]->setPos(info[0], new_row, new_col];
 				theFloor[i][j] = temp;
-				theFloor[new_row][new_col]->setMoved(true);	
+				theFloor[new_row][new_col]->setMoved(true);
 			}
 		}
 	}
@@ -684,7 +704,7 @@ void UsePotion(string direction){
         int new_chamber = info[0];
 	if (dynamic_pointer_cast<Potion>(theFloor[new_row][new_col]) ){
 		pc->use(c);
-		
+
 	}
 }
 
@@ -700,14 +720,14 @@ void Floor::notify(Subject &s){
 	if ( dynamic_pointer_cast<Dragon>(s)){
 		theFloor[info[1]][info[2]] = make_shared<Empty>(\
 			info[0],info[1],info[2]);
-	
+
 	}else if  (dynamic_pointer_cast<Human>(s){
                theFloor[info[1]][info[2]] = make_shared<Treasure>(\
                         info[0],info[1],info[2],4, false ));
 
 	}else if( dynamic_pointer_cast<Merchant>(s){
                theFloor[info[1]][info[2]] = make_shared<Treasure>(\
-                        info[0],info[1],info[2],4, false ));		
+                        info[0],info[1],info[2],4, false ));
 	}else{ //others
 		int val = rand % 2 + 1;
 		theFloor[info[1]][info[2]] = make_shared<Treasure>(\

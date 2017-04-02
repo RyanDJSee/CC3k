@@ -6,37 +6,11 @@
 #include <string>
 #include <stdlib.h>
 #include <vector>
-#include "cell.h"
-#include "pc.h"
 #include "subtype.h"
 #include "steptype.h"
+using namespace std;
 
-//#include "door.h"
-class Door;
-class Passage;
-class Wall;
-class Empty;
-class Stair;
-
-class Enemy;
-class Hafling;
-class Human;
-class Elf;
-class Orc;
-class Merchant;
-class Dragon;
-class Dwarf;
-class Treasure;
-
-class Potion;
-class RH;
-class BA;
-class BD;
-class PH;
-class WA;
-class WD;
-
-
+class Cell;
 
 class Floor:enable_shared_from_this<Floor> {
 	const int floorNum;
