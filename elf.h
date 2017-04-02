@@ -5,7 +5,7 @@
 
 class Subject;
 class Shade;
-class globin;
+class Globin;
 class Vampire;
 class Troll;
 
