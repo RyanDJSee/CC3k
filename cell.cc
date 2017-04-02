@@ -71,4 +71,4 @@ Info Cell::getName() const{
 }
 
 
-void Cell::use(shared_ptr<Item>){}//default: nothing
+void Cell::use(shared_ptr<Cell>){}//default: nothing

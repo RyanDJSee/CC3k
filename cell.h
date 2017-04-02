@@ -36,7 +36,7 @@ class Cell : public Subject, public Observer {
 
   virtual Info getInfo() const;//add const
   virtual std::string getRep() const=0; //returns the text representation of this
-  virtual void use(std::shared_ptr<Item>);//default: nothing
+  virtual void use(std::shared_ptr<Cell>);//default: nothing
   virtual std::string getName() const;
 };
 
