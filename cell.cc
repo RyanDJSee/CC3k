@@ -57,7 +57,18 @@ bool Cell::Moved() const{//returns true if has been Moved
 
 void Cell::setMoved(bool status) {//change moved to status
     moved=status;
-  }
+}
+
+
+Info Cell::getInfo() const{
+  Info info;
+  info.name=this->getName();
+  return info;
+}
+
+Info Cell::getName() const{
+  return "";
+}
 
 
 void Cell::use(shared_ptr<Item>){}//default: nothing
