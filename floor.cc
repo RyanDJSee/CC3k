@@ -78,13 +78,16 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
     }
 
     //initilize the board:
-    vector <shared_ptr <Cell> > temp;
-    for ( int i = 0 ; i < board_col ; i++){
-      shared_ptr<Cell> cel;
-      temp.push_back(cel);
-    }
+    //vector<shared_ptr<Cell>> temp;
+    //for ( int i = 0 ; i < board_col ; i++){
+    //  shared_ptr<Cell> cel{new Cell()};
+    //  temp.push_back(cel);
+    // }
     for ( int j = 0; j < board_row ; j++){
-      theFloor.push_back(temp);
+	for (int i = 0; i < board_col; i++) {
+	    shared_ptr<Cell> cel = nullptr;
+      	    theFloor[j].push_back(cel);
+	}
     }
     Build_Wall(0, 0, board_col - 1,0);
     Build_Wall(board_row -1, 0, board_col - 1,0);
@@ -101,10 +104,10 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
         Build_Room(i, colChamber1_start, colChamber1_end, 1);
       }
     }
-    theFloor[4][29]=make_shared<Door>(1,4,29);
+    theFloor[4][29]= shared_ptr<Cell> {new Door(1,4,29)};
     theFloor[4][29]->setPos(4,29,1);
     theFloor[4][29]->attach(shared_from_this());
-    theFloor[7][13] = make_shared<Door>(1,7,13);
+    theFloor[7][13] = shared_ptr<Cell> {new Door(1,7,13)};
     theFloor[7][13]->setPos(7,13,1);
     theFloor[7][13]->attach(shared_from_this());
 
@@ -120,10 +123,10 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
         Build_Room(i, colChamber2_start, colChamber2_end,2);
       }
     }
-    theFloor[9][43] = make_shared<Door>(2,9, 43);
+    theFloor[9][43] = shared_ptr<Cell> {new Door(2,9, 43)};
     theFloor[9][43]->setPos(9,43,2);
     theFloor[9][43]->attach(shared_from_this());
-    theFloor[13][43] = make_shared<Door>(2,13,43);
+    theFloor[13][43] = shared_ptr<Cell> {new Door(2,13,43)};
     theFloor[13][43]->setPos(13,43,2);
     theFloor[13][43]->attach(shared_from_this());
 
@@ -139,7 +142,7 @@ Floor::Floor(int floorNum, shared_ptr<Cell> pc, string filename): floorNum{floor
         Build_Room(i, colChamber3_start, colChamber3_end,3);
       }
     }
-    theFloor[14][13] = make_shared<Door>(3,14,13);
+    theFloor[14][13] = shared_ptr<Cell> {new Door(3,14,13)};
     theFloor[14][13]->setPos(14,13,3);
     theFloor[14][13]->attach(shared_from_this());
     theFloor[20][25] = make_shared<Door>(3, 20, 25);
