@@ -21,13 +21,13 @@
 #include "troll.h"
 
 #include "enemy.h"
-//#include "human.h"
-//#include "dwarf.h"
-//#include "halfling.h"
-//#include "elf.h"
-//#include "orcs.h"
-//#include "merchant.h"
-//#include "dragon.h"
+#include "human.h"
+#include "dwarf.h"
+#include "halfling.h"
+#include "elf.h"
+#include "orcs.h"
+#include "merchant.h"
+#include "dragon.h"
 
 #include "item.h"
 #include "potion.h"
@@ -732,15 +732,15 @@ void Floor::notify(Subject &s){
 	///when enermy died
 	vector<int> info = s.getPos();
 	//for dragon human merchant
-	if ( dynamic_pointer_cast<Dragon>(s)){
+	if ( theFloor[info[1]][info[2]]->getRep() == "G" ){
 		theFloor[info[1]][info[2]] = make_shared<Empty>(\
 			info[0],info[1],info[2]);
 
-	}else if  (dynamic_pointer_cast<Human>(s)){
+	}else if  ( theFloor[info[1]][info[2]]->getRep() == "H" ){
                theFloor[info[1]][info[2]] = make_shared<Treasure>(\
                         info[0],info[1],info[2],4, false );
 
-	}else if( dynamic_pointer_cast<Merchant>(s)){
+	}else if(theFloor[info[1]][info[2]]->getRep() =="M" ){
                theFloor[info[1]][info[2]] = make_shared<Treasure>(\
                         info[0],info[1],info[2],4, false );
 	}else{ //others
