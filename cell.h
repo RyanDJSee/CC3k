@@ -22,7 +22,7 @@ class Cell : public Subject, public Observer {
   virtual ~Cell() =default;
 
   virtual void setPos(int r, int c, int chamber=-1); //update location for this
-  virtual std::vector<int> getPos() const;//return position as a vector [row,col]
+  std::vector<int> getPos() const override;//return position as a vector [row,col]
 
   void notify(Subject &whoNotified) override; //default behaviour
   // wN called this.notify(wN), this should do sth on wN

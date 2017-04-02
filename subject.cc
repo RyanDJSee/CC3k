@@ -41,4 +41,7 @@ void Subject::attackedBy(Troll& troll){}
 void Subject::attackedBy(Drow& drow){}
 
 
+vector<int> getPos() const{}
+
+
 Subject:: ~Subject() {}
