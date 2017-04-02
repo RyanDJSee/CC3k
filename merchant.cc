@@ -15,7 +15,7 @@ Merchant::Merchant(int chamber, int r, int c):
     isHostile = false;
 }
 
-string Merchant::getRep() { return "M"; }
+string Merchant::getRep() const { return "M"; }
 
 void Merchant::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
