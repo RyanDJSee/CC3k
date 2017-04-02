@@ -11,7 +11,7 @@ class Wall final: public Cell {
   const std::string rep;
 
 public:
-  Wall(int chamber, int r, int c, string rep); //constructor
+  Wall(int chamber, int r, int c, std::string rep); //constructor
   std::string getRep() const override; //returns the text representation of this
   StepType Steppable() const;
 };

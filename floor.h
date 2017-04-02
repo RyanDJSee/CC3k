@@ -6,7 +6,7 @@
 #include <string>
 #include <stdlib.h>
 #include <vector>
-#include "Observer.h"
+#include "observer.h"
 #include "subtype.h"
 #include "steptype.h"
 using namespace std;
@@ -41,12 +41,12 @@ public:
 	void FloorInit(); //done
 	void FloorMove(std::string direction); //done
 	~Floor();
-	void notify(Subject &s); //done
+	void notify(std::shared_ptr<Subject> &s); //done
 	void addaction(std::string action);
 	void attack(std::string direction); //done
 	void EnermySwitch(); //done
 	void UsePotion(std::string direction); //done
-	SubType subtype(); //done
+	SubType subtype() const; //done
 	void clearaction(); //done
 	friend std::ostream &operator<<(std::ostream &out, const Floor &f);
 };

@@ -11,7 +11,7 @@ class Treasure: public Item {
 
 public:
   Treasure(int chamber, int r, int c, int amt); //constructor
-  void notify(Subject &whoNotified) override;
+  void notify(std::shared_ptr<Subject>& whoNotified) override;
   // wN called this.notify(wN), this should do sth on wN
   std::string getRep() const override; //returns the text representation of this
   StepType Steppable() const;

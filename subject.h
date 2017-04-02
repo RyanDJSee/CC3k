@@ -21,7 +21,7 @@ class Drow;
 class Dragon;
 
 
-class Subject {
+class Subject: public std::enable_shared_from_this<Subject> {
 protected:
   std::vector<std::shared_ptr<Observer>> observers;
 public:

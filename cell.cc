@@ -8,6 +8,7 @@
 #include "subtype.h"
 #include "steptype.h"
 #include "cell.h"
+#include "info.h"
 using namespace std;
 
 
@@ -33,7 +34,7 @@ vector<int> Cell::getPos() const{
 }
 
 
-void Cell::notify(Subject &whoNotified){}
+void Cell::notify(shared_ptr<Subject>& whoNotified){}
   // wN called this.notify(wN), this should do sth on wN
   // default behaviour:do nothing
 
@@ -66,9 +67,9 @@ Info Cell::getInfo() const{
   return info;
 }
 
-Info Cell::getName() const{
+string Cell::getName() const{
   return "";
 }
 
 
-void Cell::use(shared_ptr<Cell>){}//default: nothing
+void Cell::use(shared_ptr<Item>){}//default: nothing

@@ -10,6 +10,7 @@
 
 
 class Item;
+class Info;
 
 class Cell : public Subject, public Observer {
   int chamber; //which chamber is this in
@@ -24,7 +25,7 @@ class Cell : public Subject, public Observer {
   virtual void setPos(int r, int c, int chamber=-1); //update location for this
   std::vector<int> getPos() const override;//return position as a vector [row,col]
 
-  void notify(Subject &whoNotified) override; //default behaviour
+  void notify(std::shared_ptr<Subject> &whoNotified) override; //default behaviour
   // wN called this.notify(wN), this should do sth on wN
 
   virtual bool isEmpty() const; //whether this is empty
@@ -36,7 +37,7 @@ class Cell : public Subject, public Observer {
 
   virtual Info getInfo() const;//add const
   virtual std::string getRep() const=0; //returns the text representation of this
-  virtual void use(std::shared_ptr<Cell>);//default: nothing
+  virtual void use(std::shared_ptr<Item>);//default: nothing
   virtual std::string getName() const;
 };
 
