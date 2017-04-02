@@ -1,5 +1,8 @@
 #include "potion.h"
 #include "rh.h"
+#include <memory>
+using namespace std;
+
 
 
 RH::RH(int chamber, int r, int c, int amt):

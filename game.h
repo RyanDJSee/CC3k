@@ -23,7 +23,7 @@ public:
   void EnemySwitch();
   void Restart();
   void MoveChar(std::string dir);
-  ~Game();
+  ~Game()=default;
 };
 
 #endif

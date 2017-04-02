@@ -2,6 +2,7 @@
 #define WA_H
 
 #include "potion.h"
+#include <memory>
 class Subject;
 
 class WA final: public Potion {

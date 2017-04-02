@@ -2,6 +2,7 @@
 #define RH_H
 
 #include "potion.h"
+#include <memory>
 class Subject;
 
 class RH final: public Potion {

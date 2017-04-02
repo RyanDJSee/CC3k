@@ -1,5 +1,7 @@
 #include "potion.h"
 #include "ph.h"
+#include <memory>
+using namespace std;
 
 PH::PH(int chamber, int r, int c, int amt):
       Potion(chamber, r, c, amt) {} //constructor, default amt is for cell on Floor

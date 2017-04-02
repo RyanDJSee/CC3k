@@ -2,6 +2,7 @@
 #define PH_H
 
 #include "potion.h"
+#include <memory>
 class Subject;
 
 class PH final: public Potion {

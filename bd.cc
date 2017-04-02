@@ -1,5 +1,7 @@
 #include "potion.h"
 #include "bd.h"
+#include <memory>
+using namespace std;
 
 
 BD::BD(int chamber, int r, int c, int amt):

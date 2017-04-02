@@ -1,5 +1,7 @@
 #include "potion.h"
 #include "ba.h"
+#include <memory>
+using namespace std;
 
 
 BA::BA(int chamber, int r, int c, int amt):

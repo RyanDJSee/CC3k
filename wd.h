@@ -2,6 +2,7 @@
 #define WD_H
 
 #include "potion.h"
+#include <memory>
 class Subject;
 
 class WD final: public Potion {

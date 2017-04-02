@@ -2,6 +2,7 @@
 #define BA_H
 
 #include "potion.h"
+#include <memory>
 class Subject;
 
 class BA final: public Potion {
