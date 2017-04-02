@@ -8,7 +8,7 @@
 #include "human.h"
 #include "dwarf.h"
 #include "elf.h"
-#include "orcs.h"
+#include "orc.h"
 #include "merchant.h"
 #include "dragon.h"
 #include "halfling.h"
@@ -42,9 +42,9 @@ void PC::attackedBy(Elf& elf) {
     use(hp_ptr);
 }
 
-void PC::attackedBy(Orcs& orcs) {
+void PC::attackedBy(Orc& orc) {
     if (!isSuccessAttacked()) return;
-    int damage = ceil((100/(100+ getInfo().def))*orcs.getInfo().atk);
+    int damage = ceil((100/(100+ getInfo().def))*orc.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
     use(hp_ptr);
 }

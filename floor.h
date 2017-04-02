@@ -9,7 +9,7 @@
 #include "subtype.h"
 #include "steptype.h"
 
-class Floor {
+class Floor:enable_shared_from_this<Floor> {
 	const int floorNum;
 	const int board_row = 80;
 	const int board_col = 25;
@@ -31,7 +31,7 @@ class Floor {
 	std::vector <std::vector <int>> theDim; //done
 	shared_ptr<Cell> pc = nullptr ; //done
 	vector<int> getRandomPos(); //done
-	
+
 public:
 	Floor( int floorNum, shared_ptr<Cell> pc, std::string Filename); //done
 	void FloorInit(); //done
@@ -39,7 +39,6 @@ public:
 	~Floor();
 	void notify(Subject &s); //done
 	void addaction(std::string action);
-
 	void attack(std::string direction); //done
 	void EnermySwitch(); //done
 	void UsePotion(std::string direction); //done

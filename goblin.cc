@@ -17,6 +17,6 @@ void Goblin::notify(Subject& whoNotified) {
 
 void Goblin::attackedBy(Orcs& orcs) { // Orcs does 50% more damage to globins
     if (!isSuccessAttacked()) return;
-    int damage = ceil((100/(100+ getInfo().def))*orcs.getInfo().atk);
+    int damage = ceil((100/(100+ getInfo().def))*orc.getInfo().atk);
     shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, (int)ceil(-1.5*damage)}};
 }

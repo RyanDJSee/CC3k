@@ -7,7 +7,7 @@ using namespace std;
 class Human;
 class Dwarf;
 class Elf;
-class Orcs;
+class Orc;
 class Merchant;
 class Dragon;
 class Halfling;
@@ -21,7 +21,7 @@ class PC: public Character {
     virtual void attackedBy(Human& human);
     virtual void attackedBy(Dwarf& dwarf);
     virtual void attackedBy(Elf& elf);
-    virtual void attackedBy(Orcs& orcs);
+    virtual void attackedBy(Orc& orc);
     virtual void attackedBy(Merchant& merchant);
     virtual void attackedBy(Dragon& dragon);
     virtual void attackedBy(Halfling& halfling);

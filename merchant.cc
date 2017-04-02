@@ -2,7 +2,7 @@
 #include <string>
 #include <math.h>
 #include "shade.h"
-#include "goblin.h"
+#include "globin.h"
 #include "vampire.h"
 #include "drow.h"
 #include "troll.h"
@@ -15,14 +15,14 @@ Merchant::Merchant(int chamber, int r, int c):
     isHostile = false;
 }
 
-string Merchant::getRep() const { return "M"; }
+string Merchant::getRep() { return "M"; }
 
 void Merchant::notify(Subject& whoNotified) {
     whoNotified.attackedBy(*this);
 }
 
 void Merchant::attackedBy(Shade& shade) {
-    if (isHostile == false) { 
+    if (isHostile == false) {
 	isHostile = true;
     } else {
     	int damage = ceil((100/(100 + getInfo().def))*shade.getInfo().atk);
@@ -31,42 +31,42 @@ void Merchant::attackedBy(Shade& shade) {
     }
 }
 
-void Merchant::attackedBy(Goblin& goblin) {        
-    if (isHostile == false) { 
+void Merchant::attackedBy(Goblin& goblin) {
+    if (isHostile == false) {
 	isHostile = true;
-    } else {    
-	int damage = ceil((100/(100 + getInfo().def))*goblin.getInfo().atk);    
-	shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};    
+    } else {
+	int damage = ceil((100/(100 + getInfo().def))*goblin.getInfo().atk);
+	shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
 	use(hp_ptr);
     }
 }
 
-void Merchant::attackedBy(Vampire& vampire) {               
-    if (isHostile == false) {               
-	isHostile = true;                       
-    } else {                                        
-	int damage = ceil((100/(100 + getInfo().def))*vampire.getInfo().atk);                                        
+void Merchant::attackedBy(Vampire& vampire) {
+    if (isHostile == false) {
+	isHostile = true;
+    } else {
+	int damage = ceil((100/(100 + getInfo().def))*vampire.getInfo().atk);
 	shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
-	use(hp_ptr);                                                    
+	use(hp_ptr);
     }
 }
 
-void Merchant::attackedBy(Drow& drow) {                    
-    if (isHostile == false) {                               
-	isHostile = true;                                               
-    } else {                                                                        
+void Merchant::attackedBy(Drow& drow) {
+    if (isHostile == false) {
+	isHostile = true;
+    } else {
 	int damage = ceil((100/(100 + getInfo().def))*drow.getInfo().atk);
 	shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
-	use(hp_ptr);                                                                                                
-    }   
+	use(hp_ptr);
+    }
 }
 
-void Merchant::attackedBy(Troll& troll) {                    
-    if (isHostile == false) {                               
-	isHostile = true;                                               
-    } else {                                                                        
+void Merchant::attackedBy(Troll& troll) {
+    if (isHostile == false) {
+	isHostile = true;
+    } else {
 	int damage = ceil((100/(100 + getInfo().def))*troll.getInfo().atk);
 	shared_ptr<Item> hp_ptr{new RH{-1, -1, -1, -damage}};
-	use(hp_ptr);                                                                                                
-    }   
+	use(hp_ptr);
+    }
 }

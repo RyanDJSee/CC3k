@@ -18,10 +18,10 @@ class Character: public Cell, public std::enable_shared_from_this<Character>{
     public:
     Character(int chamber, int row, int col, int hp, int atk, int def, int maxHP);
     void clearPotion(); //clear temporary potions when move to next floor
-    Info getInfo(); //get info of a character
-    bool isDead();
+    Info getInfo() const; //get info of a character
+    bool isDead() const;
     void use(shared_ptr<Item>); // use potion on character
-    bool isSuccessAttacked(); // U{0,1} RNG; if 1, then true; if 0, then false
+    bool isSuccessAttacked() const; // U{0,1} RNG; if 1, then true; if 0, then false
     StepType Steppable() const;
 
     virtual ~Character();

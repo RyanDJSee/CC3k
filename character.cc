@@ -14,21 +14,39 @@
 using namespace std;
 
 
-Character::Character(int chamber, int row, int col, int hp, int atk, int def, int maxHP): 
+Character::Character(int chamber, int row, int col, int hp, int atk, int def, int maxHP):
     Cell{chamber, row, col}, atk{atk}, def{def}, maxHP{maxHP} {
+
     shared_ptr<RH> hp_ptr{new RH(-1, -1, -1, hp)};
     properties.emplace_back(hp_ptr);
 }
 
-bool Character::isSuccessAttacked() {
+bool Character::isSuccessAttacked() const{
     if (rand() % 2 == 1) return true;
     return false;
 }
 
-bool Character::isDead() {
+bool Character::isDead() const{
     if (getInfo().hp <= 0) return true;
     return false;
 }
+
+#if 0
+void Character::clearPotion() {
+    int i = 1;
+    int ii = properties.size() - i;
+    int erase_i = 1;
+
+    while (i >= 0) {
+	if (!dynamic_pointer_cast<RH>(properties.at(i))) {
+    	    properties.erase(i);
+	    --i;
+	} else {
+	    --i;
+	}
+    }
+}
+#endif
 
 void Character::clearPotion() {
     int i = 1;
@@ -43,7 +61,7 @@ void Character::clearPotion() {
 }
 
 
-Info Character::getInfo() {
+Info Character::getInfo() const{
     Info info;
     info.hp = 0;
     info.atk = atk;
@@ -90,17 +108,17 @@ void Character::use(shared_ptr<Item> item) {
 	} else { // otherwise, add the item to properties with no change
 	    properties.emplace_back(item);
 	}
-	if (isDead()) { throw END(); } // if PC is dead, throw an exception 
-    } 
-    
+	if (isDead()) { throw END(); } // if PC is dead, throw an exception
+    }
+
     else { // if the character is Enemy
-	properties.emplace_back(item);  
+	properties.emplace_back(item);
 	if (isDead()) { // if the enemy is dead
 	    if (dynamic_pointer_cast<Dragon>(shared_from_this())) {
 		dynamic_pointer_cast<Subject>(observers[1])->dettachall();
 	    }
 	    notifyObservers(SubType::FLOOR); // notify floor to remove the enemy from floor
-	    
+
 	}
     }
 }
