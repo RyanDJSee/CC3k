@@ -2,12 +2,16 @@
 #define __FLOOR_H__
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <stdlib.h>
 #include <vector>
 #include "cell.h"
+#include "pc.h"
 #include "subtype.h"
 #include "steptype.h"
+
+//#include "door.h"
 
 class Floor {
 	const int floorNum;
@@ -15,10 +19,10 @@ class Floor {
 	const int board_col = 25;
 	int pc_row;
 	int pc_col;
-	void Build_Wall(int row, int start, int end); //done
-	void Build_Room(int row, int start, int end); //done
+	void Build_Wall(int row, int start, int end,int chamber); //done
+	void Build_Room(int row, int start, int end,int chamber); //done
 	void Build_Passage ( int row, int col, int counter, std::string direction); //done
-	void attach_chamber(hared_ptr<Cell> c, int chamber, int row, int col);//done
+	void attach_chamber(shared_ptr<Cell> c, int chamber, int row, int col);//done
 	void subject_init(int chamber, int row, int col, std::string type); //done
 	void summon_dragon(int chamber, int row, int col); //done
 	void enermy_move(); //done
@@ -31,7 +35,7 @@ class Floor {
 	std::vector <std::vector <int>> theDim; //done
 	shared_ptr<Cell> pc = nullptr ; //done
   public:
-	Floor(std::string Filename, int floorNum, PC *pc); //done	
+	Floor(int floorNum, shared_ptr<PC> pc,std::string Filename=""); //done	
 	void FloorInit(); //done
 	void FloorMove(std::string direction); //done
 	~Floor();
@@ -41,7 +45,7 @@ class Floor {
 	void attack(std::string direction); //done
 	void EnermySwitch(); //done
 	void UsePotion(std::string direction); //done
-	SubType subtype() override; //done
+	SubType subtype(); //done
 	void clearaction(); //done
 	friend std::ostream &operator<<(std::ostream &out, const Floor &f);
 };
