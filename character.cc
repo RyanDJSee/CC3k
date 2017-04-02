@@ -16,7 +16,6 @@ using namespace std;
 
 Character::Character(int chamber, int row, int col, int hp, int atk, int def, int maxHP): 
     Cell{chamber, row, col}, atk{atk}, def{def}, maxHP{maxHP} {
-	
     shared_ptr<RH> hp_ptr{new RH(-1, -1, -1, hp)};
     properties.emplace_back(hp_ptr);
 }
