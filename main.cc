@@ -72,6 +72,7 @@ int main(int argc, char* argv[]) {// need to add args
           }
         }
       } //else ignore
+
       catch (RESTART &re) {
 #ifdef D
         throw;

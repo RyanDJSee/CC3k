@@ -1,6 +1,7 @@
 #include "potion.h"
 #include "bd.h"
 #include <memory>
+#include <iostream>
 using namespace std;
 
 
@@ -23,4 +24,7 @@ void BD::notify(shared_ptr<Subject>& whoNotified) {
 
 int BD::getDef() const { // returns the HP amount in this
   return amount;
+  #ifdef D
+    cout<<"inside bd amt is "<<amount<<endl;
+  #endif
 }

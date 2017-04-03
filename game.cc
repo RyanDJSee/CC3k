@@ -27,6 +27,8 @@ void Game::GameInit(string character, string filename) {//needs new character, s
     pc = make_shared<Shade>(-1, -1, -1);
 #ifdef D
     cout<<"created s"<<endl;
+        cout<<"character is"<<pc->getName()<<endl;
+        cout<<"maxhp is"<<dynamic_pointer_cast<Character>(pc)->maxHP;
 #endif
   } else if (character=="d") {
     pc = make_shared<Drow>(-1, -1, -1);
@@ -41,7 +43,8 @@ void Game::GameInit(string character, string filename) {//needs new character, s
   #ifdef D
       cout<<"try creating floor"<<endl;
   #endif
-  currFloor = make_shared<Floor>(currFloornum,pc,file);
+  currFloor = shared_ptr<Floor> {new Floor(currFloornum,pc)};
+  currFloor->FloorInit1(file);
   #ifdef D
       cout<<"created floor"<<endl;
   #endif
@@ -53,24 +56,24 @@ void Game::GameInit(string character, string filename) {//needs new character, s
     #ifdef D
         cout<<"done floorinit"<<endl;
     #endif
-    cout<<currFloor;
+    cout<<*currFloor;
     currFloor->clearaction();
   }
-  cout<<currFloor;
+  cout<<*currFloor;
   currFloor->clearaction();
 }
 
 
 void Game::UsePotion(string dir){
   currFloor->UsePotion(dir);
-  cout<<currFloor;
+  cout<<*currFloor;
   currFloor->clearaction();
 }
 
 
 void Game::Attack(string dir){
   currFloor->attack(dir);
-  cout<<currFloor;
+  cout<<*currFloor;
   currFloor->clearaction();
 }
 
@@ -87,6 +90,11 @@ void Game::Restart(){
 
 void Game::MoveChar(string dir){
   try {
+    #ifdef D
+        cout<<"start game move"<<endl;
+        cout<<"character is"<<pc->getName()<<endl;
+        cout<<"maxhp is"<<dynamic_pointer_cast<Character>(pc)->maxHP;
+    #endif
     currFloor->FloorMove(dir);
 
   } catch (NEXTFLOOR &next){
@@ -94,10 +102,13 @@ void Game::MoveChar(string dir){
     if (currFloornum>=6) {
       throw END();
     } else{
-      currFloor = make_shared<Floor>(currFloornum,pc,file);
+      shared_ptr<Floor> nf{new Floor(currFloornum,pc)};
+      nf->FloorInit1(file);
+      nf->FloorInit();
+      currFloor = nf;
     }
   }
-  cout<<currFloor;
+  cout<<*currFloor;
   currFloor->clearaction();
 }
 

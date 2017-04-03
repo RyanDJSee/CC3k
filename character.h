@@ -13,6 +13,7 @@ class Character: public Cell {
     std::vector<std::shared_ptr<Item>> properties;
     int atk;
     int def;
+  public:
     int maxHP;
 
     public:

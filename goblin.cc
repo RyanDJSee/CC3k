@@ -22,3 +22,5 @@ void Goblin::attackedBy(Orc& orc) { // Orcs does 50% more damage to globins
 }
 
 string Goblin::getName() const { return "Goblin"; }
+
+Goblin::~Goblin(){}

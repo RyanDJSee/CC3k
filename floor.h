@@ -15,8 +15,8 @@ class Cell;
 
 class Floor: public Observer, public std::enable_shared_from_this<Floor> {
 	const int floorNum;
-	const int board_row = 80;
-	const int board_col = 25;
+	const int board_row = 25;
+	const int board_col = 80;
 	int pc_row;
 	int pc_col;
 	void Build_Wall(int row, int start, int end,int chamber); //done
@@ -37,7 +37,8 @@ class Floor: public Observer, public std::enable_shared_from_this<Floor> {
 	vector<int> getRandomPos(); //done
 
 public:
-	Floor(int floorNum, shared_ptr<Cell> pc,std::string Filename=""); //done
+	Floor(int floorNum, shared_ptr<Cell> pc); //done
+	void FloorInit1(std::string Filename=""); //done
 	void FloorInit(); //done
 	void FloorMove(std::string direction); //done
 	~Floor();

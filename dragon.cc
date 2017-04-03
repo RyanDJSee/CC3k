@@ -1,6 +1,7 @@
 #include "dragon.h"
 #include <string>
 #include <memory>
+#include <iostream>
 
 using namespace std;
 
@@ -12,7 +13,13 @@ Dragon::Dragon(int chamber, int r, int c):
 string Dragon::getRep() const { return "D"; }
 
 void Dragon::notify(shared_ptr<Subject>& whoNotified) {
+#ifdef D
+  cout<<"inside dragon notify"<<endl;
+#endif
     whoNotified->attackedBy(*this);
+    #ifdef D
+      cout<<"done dragon notify"<<endl;
+    #endif
 }
 
 string Dragon::getName() const { return "Dragon"; }

@@ -9,7 +9,6 @@
 #include "steptype.h"
 #include "cell.h"
 #include "info.h"
-#include <iostream>
 using namespace std;
 
 
@@ -18,15 +17,12 @@ Cell::Cell(int chamber, int row, int col):
 
 
 void Cell::setPos(int r, int c, int cham){ //update location for this
-  #ifdef D2
-    cout<<"enter setpos "<<row<<col<<cham<<endl;
-  #endif
   if (cham!=-1) {
     chamber=cham;
   }
   row=r;
   col=c;
-  #ifdef D2
+  #ifdef D
     cout<<"done setpos "<<row<<col<<endl;
 #endif
 }
@@ -35,18 +31,13 @@ void Cell::setPos(int r, int c, int cham){ //update location for this
 vector<int> Cell::getPos() const{
   //return position as a vector [row,col]
   vector<int> v;
-  v.emplace_back(chamber);
   v.emplace_back(row);
   v.emplace_back(col);
   return v;
 }
 
 
-void Cell::notify(shared_ptr<Subject>& whoNotified){
-  #ifdef D
-  cout<<"inside cell notify do nothing"<<endl;
-#endif
-}
+void Cell::notify(shared_ptr<Subject>& whoNotified){}
   // wN called this.notify(wN), this should do sth on wN
   // default behaviour:do nothing
 

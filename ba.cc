@@ -1,6 +1,7 @@
 #include "potion.h"
 #include "ba.h"
 #include <memory>
+#include <iostream>
 using namespace std;
 
 
@@ -23,4 +24,7 @@ void BA::notify(shared_ptr<Subject>& whoNotified) {
 
 int BA::getAtk() const { // returns the HP amount in this
   return amount;
+  #ifdef D
+    cout<<"inside ba amt is "<<amount<<endl;
+  #endif
 }
