@@ -13,7 +13,7 @@ public:
   void notify(std::shared_ptr<Subject>& whoNotified) override;
   std::string getName() const override;
 
-  ~Shade();
+  ~Shade() = default;
 };
 
 #endif

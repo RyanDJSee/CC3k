@@ -13,7 +13,7 @@ class Vampire final: public PC {
     void attackedBy(Dwarf& dwarf) override;
     std::string getName() const override;
 
-    ~Vampire();
+    ~Vampire() = default;
 };
 
 #endif

@@ -12,7 +12,7 @@ class Troll final: public PC {
     void notify(std::shared_ptr<Subject>& whoNotified) override;
     std::string getName() const override;
 
-    ~Troll();
+    ~Troll() = default;
 };
 
 #endif

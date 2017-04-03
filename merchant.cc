@@ -11,10 +11,10 @@
 
 using namespace std;
 
+bool Merchant::isHostile = false;
+
 Merchant::Merchant(int chamber, int r, int c):
-    Enemy{chamber, r, c, 140, 20, 20} {
-    isHostile = false;
-}
+    Enemy{chamber, r, c, 140, 20, 20} {}
 
 string Merchant::getRep() const { return "M"; }
 

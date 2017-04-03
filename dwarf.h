@@ -13,7 +13,7 @@ class Dwarf final: public Enemy {
     void notify(std::shared_ptr<Subject>& whoNotified) override;
     std::string getName() const override;
 
-    ~Dwarf();
+    ~Dwarf() = default;
 };
 
 #endif

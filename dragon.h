@@ -13,7 +13,7 @@ class Dragon final: public Enemy {
     std::string getRep() const;
     std::string getName() const override;
 
-    ~Dragon();
+    ~Dragon() = default;
 };
 
 #endif

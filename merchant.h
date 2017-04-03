@@ -26,7 +26,7 @@ class Merchant final: public Enemy {
     void attackedBy(Troll& troll) override;
     void attackedBy(Drow& drow) override;
 
-    ~Merchant();
+    ~Merchant() = default;
 };
 
 #endif

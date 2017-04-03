@@ -23,7 +23,7 @@ class Elf final: public Enemy {
     void attackedBy(Vampire& vampire) override;
     void attackedBy(Troll& troll) override;
 
-    ~Elf();
+    ~Elf() = default;
 };
 
 #endif

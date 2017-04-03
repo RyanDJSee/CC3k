@@ -12,7 +12,7 @@ class Drow final: public PC {
     void notify(std::shared_ptr<Subject>& whoNotified) override;
     std::string getName() const override;
 
-    ~Drow();
+    ~Drow() = default;
 };
 
 #endif

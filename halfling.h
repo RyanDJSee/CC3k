@@ -25,7 +25,7 @@ class Halfling final: public Enemy {
     void attackedBy(Troll& troll) override;
     void attackedBy(Drow& drow) override;
 
-    ~Halfling();
+    ~Halfling() = default;
 };
 
 #endif
