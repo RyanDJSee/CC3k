@@ -7,9 +7,10 @@
 #include "observer.h"
 #include <string>
 #include <vector>
-using namespace std;
+
 
 class Item;
+class Info;
 
 class Cell : public Subject, public Observer {
   int chamber; //which chamber is this in
@@ -21,22 +22,23 @@ class Cell : public Subject, public Observer {
   Cell(int chamber, int row, int col);//constructor
   virtual ~Cell() =default;
 
-  void setPos(int r, int c, int chamber=-1); //update location for this
-  vector<int> getPos() const;//return position as a vector [row,col]
+  virtual void setPos(int r, int c, int chamber=-1); //update location for this
+  std::vector<int> getPos() const override;//return position as a vector [row,col]
 
-  void notify(Subject &whoNotified) override; //default behaviour
+  void notify(std::shared_ptr<Subject> &whoNotified) override; //default behaviour
   // wN called this.notify(wN), this should do sth on wN
 
   virtual bool isEmpty() const; //whether this is empty
   virtual StepType Steppable() const=0;
   //returns the StepType of this: CantStep/PickUp/WalkOver
-  virtual SubType subtype() const; //returns the SubType of this: DP/CL
+  SubType subtype() const; //returns the SubType of this: CELL/FLOOR
   bool Moved() const;//returns true if has been Moved
-  void setMove(bool status);
+  void setMoved(bool status);
 
-  virtual string getRep() const=0; //returns the text representation of this
-  virtual void use(shared_ptr<Item>);//default: nothing
-
+  virtual Info getInfo() const;//add const
+  virtual std::string getRep() const=0; //returns the text representation of this
+  virtual void use(std::shared_ptr<Item>);//default: nothing
+  virtual std::string getName() const;
 };
 
 #endif

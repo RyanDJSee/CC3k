@@ -1,12 +1,18 @@
 #include "potion.h"
 #include "ba.h"
+#include <memory>
+#include <iostream>
+using namespace std;
+
+
+bool BA::wasUsed=false;
 
 
 BA::BA(int chamber, int r, int c, int amt):
       Potion(chamber, r, c, amt) {} //constructor, default amt is for cell on Floor
 
 
-void BA::notify(Subject &whoNotified) {
+void BA::notify(shared_ptr<Subject>& whoNotified) {
   // wN called this.notify(wN), this should do sth on wN
   //called when PC pass by
   if (wasUsed) {
@@ -18,4 +24,7 @@ void BA::notify(Subject &whoNotified) {
 
 int BA::getAtk() const { // returns the HP amount in this
   return amount;
+  #ifdef D
+    cout<<"inside ba amt is "<<amount<<endl;
+  #endif
 }

@@ -4,7 +4,7 @@
 #include "cell.h"
 #include "steptype.h"
 #include <string>
-using namespace std;
+
 
 
 class Empty final: public Cell {
@@ -12,7 +12,7 @@ class Empty final: public Cell {
 public:
   Empty(int chamber, int r, int c); //constructor
   bool isEmpty() const override;
-  string getRep() const override; //returns the text representation of this
+  std::string getRep() const override; //returns the text representation of this
   StepType Steppable() const override;
 
 };
